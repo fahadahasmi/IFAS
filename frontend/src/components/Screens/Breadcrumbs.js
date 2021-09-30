@@ -1,21 +1,14 @@
 import React,{useRef} from "react";
 import {Link} from 'react-router-dom';
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
-// import $ from "jquery";
-// import "./jquery.breadcrumbs-generator.min";
 
 const Breadcrumbs = () => {
   const sidebar = useRef("0px");
   const breadcrumbs = useBreadcrumbs();
-  // $(function () {
-  //   $("#breadcrumb").breadcrumbsGenerator({
-  //     sitemaps: "#sitemaps",
-  //     index_type:"index.html"
-  //   });
-  // });
+  
 
   function openSidebar(){
-    sidebar.current.style.width = '250px';
+    sidebar.current.style.width = '300px';
   }
 
   function closeSidebar(){
@@ -39,8 +32,18 @@ const Breadcrumbs = () => {
           <Link to="#" id="closeNav" onClick={closeSidebar}>
             ×
           </Link>
+          <div className="Profile">
+            <img src="https://img.icons8.com/color/48/000000/test-account.png" alt="img"></img>
+            <h2>ABCD</h2>
+            <p>AnasImamShaikh@gmail.com</p>
+          </div>
+          <hr>
+          </hr>
+          
           <Link to="#">About Us</Link>
           <Link to="#">Contact Us</Link>
+          <Link to="#">Help</Link>
+          <Link to="#">About Developers</Link>
         </div>
       </div>
     </>
