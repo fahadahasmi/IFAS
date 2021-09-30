@@ -14,15 +14,6 @@ router.post('/upload',async (req,res)=>{
         res.status(500).send("Internal server error");
     })
 });
-router.get('/upload',async (req,res)=>{
-    Dataset.find({
-    }).then((Data)=>{
-        res.json(Data)
-    }).catch((err)=>{
-        console.error(err);
-        res.status(500).send("Internal server error");
-    })
-});
 
 router.post('/uploadStudentDs/:name',async (req,res)=>{
     const {className,studentName,RollNo,Image} = req.body;
@@ -45,22 +36,30 @@ router.post('/uploadStudentDs/:name',async (req,res)=>{
     }
 });
 
-router.get('/uploadStudentDs/:name',async (req,res)=>{
-    const {className,studentName,RollNo,Image} = req.body;
+router.post('/editdatasetname/:name',async (req,res)=>{
+    const {datasetName} = req.body;
     console.log(req.params.name)
-    try{
-        StudentDs.find({
-            className:req.params.name
-        }).then((data)=>{
-            res.json(data);
-        }).catch((err)=>{
-            console.log(err);
-        })
-    }
-    catch(err){
+    Dataset.findOneAndUpdateOne({
+        datasetName:req.params.name
+    },{datasetName}).then((Data)=>{
+        res.json(Data)
+    }).catch((err)=>{
         console.error(err);
         res.status(500).send("Internal server error");
-    }
+    })
+});
+
+router.get('/deletedatasetname/:name',async (req,res)=>{
+    const {datasetName} = req.body;
+    console.log(req.params.name)
+    Dataset.findOneAndDelete({
+        datasetName:req.params.name
+    },{datasetName}).then((Data)=>{
+        res.json(Data)
+    }).catch((err)=>{
+        console.error(err);
+        res.status(500).send("Internal server error");
+    })
 });
 
 module.exports = router;
