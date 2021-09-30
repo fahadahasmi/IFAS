@@ -1,0 +1,130 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background: linear-gradient( 90deg, #85FFCC, #80FCFA, #FF82F5);
+    color: white; 
+    padding: 0px 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    padding: 10px 5px;
+}
+
+.logo img {
+    width: 70px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 75px;
+}
+
+.logo h2 {
+    background: #000105;
+    background: -webkit-linear-gradient(180deg, #0C158A 0%, #3F3773 25%, #0C0C0D 100%);
+    background: -moz-linear-gradient(180degt, #0C158A 0%, #3F3773 25%, #0C0C0D 100%);
+    background: linear-gradient(180deg, #0C158A 0%, #3F3773 25%, #0C0C0D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'IBM Plex Serif', serif;
+}
+
+.nav-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-content ul {
+    display: flex;
+    align-items: center;
+}
+
+.nav-content ul li {
+    display: flex;
+    list-style: none;
+    margin: 3px;
+}
+
+.nav-content ul li a {
+    display: flex;
+    text-decoration: none;
+    background: linear-gradient(to right, #0C158A 0%, #3F3773 25%, #0C0C0D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 3px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'IBM Plex Serif', serif, sans-serif;
+}
+
+.nav-content ul li a img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border: 1px solid rgb(0, 0, 37);
+    border-radius: 50%;
+}
+input
+{
+    padding: 2px;
+    display: inline;
+    margin: 5px auto;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    width: 500px; 
+    height: 40px;
+    outline: none;
+}
+button
+{
+    cursor: pointer;
+    padding: 2px;
+    display: inline;
+    font-weight: 600;
+    height: 40px;
+    margin: 5px auto;
+    width: 200px;   
+    background: #A0F8E8;
+    border: 1px solid #FFFFFF;
+    box-shadow: inset 0px 4px 24px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+.container
+{
+    display: flex;
+    width: 750px;
+    margin: 10px auto;
+}
+table
+{
+    display: flex;
+    margin: 50px auto;
+    width: 530px;
+    background: linear-gradient(90deg, rgba(186, 83, 112, 0.86) 0%, #F4E2D8 100%);
+    align-content: center;
+    
+}
+td{
+    padding: 10px;
+    border-bottom: 1px solid black;
+    text-align: center;
+    font-weight: bold;
+}
+tr{
+    padding: 20px;
+    text-align: center; 
+}
+.bar {
+	position:relative;
+  float:left;
+  min-width:1%;
+  height:100%;
+  background: brown;
+}

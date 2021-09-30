@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&display=swap');
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* background: linear-gradient( 26deg, #111e3a, #0a0a0ce8, black);
+    color: white; */
+    padding: 0px 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    padding: 10px 5px;
+}
+
+.logo img {
+    width: 70px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 85%;
+}
+
+.logo h2 {
+    background: #0C158A;
+    background: -webkit-linear-gradient(to right, #0C158A 0%, #3F3773 25%, #0C0C0D 100%);
+    background: -moz-linear-gradient(to right, #0C158A 0%, #3F3773 25%, #0C0C0D 100%);
+    background: linear-gradient(to right, #0C158A 0%, #3F3773 25%, #0C0C0D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'IBM Plex Serif', serif;
+}
+
+.nav-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-content ul {
+    display: flex;
+    align-items: center;
+}
+
+.nav-content ul li {
+    display: flex;
+    list-style: none;
+    margin: 3px;
+}
+
+.nav-content ul li a {
+    display: flex;
+    text-decoration: none;
+    background: linear-gradient(to right, #0C158A 0%, #3F3773 25%, #0C0C0D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 3px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'IBM Plex Serif', serif, sans-serif;
+}
+
+.nav-content ul li a img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border: 1px solid rgb(0, 0, 37);
+    border-radius: 50%;
+}
+
+#sideNav {
+    height: 100%;
+    background: linear-gradient(10deg, rgb(166, 166, 228), rgb(22, 22, 99));
+    z-index: 1;
+    padding-top: 30px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#sideNav a {
+    display: block;
+    padding: 8px 8px 10px 35px;
+    font-size: 25px;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+#sideNav a:hover {
+    color: aliceblue;
+}
+
+.breadcum {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 43px;
+    background: linear-gradient(90deg, rgb(33, 33, 80), lightblue);
+    padding: 10px 20px;
+}
+
+.breadcum ul {
+    display: flex;
+    list-style: none;
+}
+
+.breadcum ul li {
+    padding: 2px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', sans-serif;
+    color: white;
+}
+
+.breadcum ul li span+span::before {
+    padding: 5px;
+    color: white;
+    content: "/";
+    font-weight: bold;
+}
+
+.breadcum ul li span {
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', sans-serif;
+    color: white;
+}
+
+.breadcum ul li span :hover {
+    text-decoration: underline;
+    color: white;
+}
+
+.buttonsSection {
+    display: flex;
+    margin: 40px;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    align-items: center;
+    justify-content: space-evenly;
+    background: whitesmoke;
+    width: 875px;
+    height: 300px;
+    box-shadow: 5px 10px 18px #233a32;
+}
+
+.container a {
+    margin: 10px 20px;
+    padding: 20px;
+    width: 200px;
+    height: 100px;
+    box-shadow: 5px 5px 10px #233a32;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.container a:hover {
+    position: relative;
+    bottom: 5px;
+    left: 5px;
+    transition: 0.5s ease;
+}
+
+.container a div h5 {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    font-family: 'IBM Plex Serif', serif;
+}
+
+.container a:nth-child(1) {
+    color: white;
+    background: linear-gradient(red, rgb(255, 109, 109));
+}
+
+.container a:nth-child(2) {
+    color: white;
+    background: linear-gradient(blue, rgb(109, 131, 255));
+}
+
+.container a:nth-child(3) {
+    color: white;
+    background: linear-gradient(green, rgb(109, 255, 182));
+}
+
+#chartSection {
+    display: flex;
+    margin: 50px;
+    padding: 10px;
+}
+
+.chart {
+    margin: auto;
+}

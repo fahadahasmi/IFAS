@@ -1,0 +1,35 @@
+.attendContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+}
+
+#videoContainer{
+    display: none;
+    width:700px;
+    height: 650px;
+    margin: 20px auto;
+    padding: 10px 5px;
+    position:relative;
+}
+
+#video{
+    margin:auto;
+}
+
+#buttons{
+    margin:5px auto;
+}
+
+.share{
+    margin:5px;
+    border-radius:20px;
+    color:white;
+}
+
+canvas{
+    position:relative;
+    top:50px;
+    right:650px;
+}

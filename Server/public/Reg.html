@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        section {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            padding: 16px;
+            background-color: azure;
+            align-content: center;
+            display: flex;
+            flex-direction: column;
+            width: 500px;
+            border-radius: 10px;
+            margin: 100px auto;
+        }
+        
+        h2 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+            font-weight: bold;
+            background: linear-gradient(180deg, #4D0A77 0%, rgba(241, 120, 182, 0.83) 99.99%, rgba(194, 69, 133, 0.83) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .logo {
+            margin: auto;
+            padding: 30px;
+        }
+        
+        .logo img {
+            width: 150px;
+            height: 120px;
+            border-radius: 10px;
+        }
+        
+        input {
+            padding: 6px;
+            margin: 5px auto;
+            border-radius: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.6);
+            width: 360px;
+            outline: none;
+        }
+        
+        button {
+            border-radius: 8px;
+            color: white;
+            padding: 6px;
+            width: 360px;
+            height: 40px;
+            font-weight: 600;
+            font-size: 22px;
+            font-family: 'Times New Roman', Times, serif;
+            margin: 10px auto;
+            background: linear-gradient(to bottom, #cc99ff 0%, #ff99cc 100%);
+            border: 1px solid #C480E4;
+            box-shadow: inset 0px 4px 5px rgba(0, 0, 0, 0.25);
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        #login {
+            margin: 10px auto;
+        }
+        
+        #Login {
+            color: #d45d9b;
+        }
+        
+        .gradient-background {
+            background: linear-gradient(62deg, #EE7752, #E73C7E, #bb3dbb, #23D5AB);
+            animation: gradient 10s ease infinite;
+            background-size: 400% 400%;
+        }
+        
+        @-webkit-keyframes gradient {
+            0% {
+                background-position: 0 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        @keyframes gradient {
+            0% {
+                background-position: 0 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Registration</title>
+</head>
+
+<body class="gradient-background">
+    <div class="container">
+        <h2>FACE RECOGNITION SYSTEM</h2>
+
+        <section>
+            <div class="logo">
+                <img src="/Image/fr logo.jpg" alt="logo" />
+            </div>
+            <form method="POST">
+
+                <label for="email"></label>
+                <input type="email" placeholder="Email ID" name="email" id="email" required>
+
+                <label for="name"></label>
+                <input type="text" placeholder="Name" name="name" id="name" required>
+
+                <label for="institute"></label>
+                <input type="text" placeholder="Institute Name" name="institute" id="institute" required>
+
+                <label for="username"></label>
+                <input type="text" placeholder="Username" name="username" id="username" required>
+
+
+                <label for="pswd"></label>
+                <input type="password" placeholder="Password" name="password" id="pswd" required>
+
+                <button class="gradient-background" type="submit">Sign Up</button>
+                <div id="login">
+                    <p>Already have an account? <a href="#">Login</a></p>
+                </div>
+            </form>
+
+        </section>
+    </div>
+</body>
+
+</html>

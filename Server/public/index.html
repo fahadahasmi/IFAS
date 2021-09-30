@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="https://img.icons8.com/fluency/48/000000/facial-recognition-scan.png" type="image/x-icon">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/Image/frlogo.jpg" alt="Logo" />
+            <h2>Face Recognization System</h2>
+        </div>
+        <div class="nav-content">
+            <ul id="sitemaps">
+                <li><a href="/">Home</a></li>
+                <li><a href="/attendance.html">Attendance</a></li>
+                <li><a href="">Log out</a></li>
+                <li>
+                    <a><img src="https://img.icons8.com/color/48/000000/test-account.png" /></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcum">
+        <ul id="breadcumb">
+            <li><a href="/">Home</a></li>
+        </ul>
+
+        <span id="openNav"><img src="https://img.icons8.com/fluency-systems-regular/25/000000/menu--v1.png"/></span>
+    </div>
+
+    <div id="sideNav">
+        <a href="javascript:void(0)" id="closeNav">&times;</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact Us</a>
+    </div>
+
+
+    <section class="buttonsSection">
+        <div class="container">
+            <a href="/attendance.html">
+                <div>
+                    <h5>Get attendance</h5>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <h5>Upload dataset</h5>
+                </div>
+            </a>
+            <a href="">
+                <div>
+                    <h5>Attendance Records</h5>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="chartSection">
+        <div class="chart">
+            <canvas id="myChart" width="800" height="400"></canvas>
+        </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="/js/jquery.breadcrumbs-generator.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        $(function() {
+            ($('#breadcrumb').breadcrumbsGenerator({
+                sitemaps: '#sitemaps',
+                index_type: 'index.html'
+            }));
+
+        });
+
+        document.getElementById('openNav').addEventListener('click', () => {
+            document.getElementById('sideNav').style.width = '250px';
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        });
+
+        document.getElementById('closeNav').addEventListener('click', () => {
+            document.getElementById('sideNav').style.width = '0';
+            document.body.style.backgroundColor = "white";
+        });
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        const labels = [
+            'SE Comps',
+            'TE Comps',
+            'FE Extc',
+            'SE Civil',
+            'BE Comps',
+            'BE Extc',
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Strength',
+                backgroundColor: 'RGBA(74,236,90,0.9)',
+                hoverBackgroundColor: 'RGBA(74,254,85,0.9)',
+                borderWidth: '2',
+                borderRadius: '10',
+                borderColor: 'rgb(72, 139, 132,1)',
+                data: [50, 60, 55, 42, 40, 30, 45],
+            }]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                animations: true
+            }
+        };
+
+        var myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
+
+</body>
+
+</html>

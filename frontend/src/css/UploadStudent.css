@@ -1,0 +1,92 @@
+
+input
+{
+    padding: 2px;
+    display: inline;
+    margin: 5px auto;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    width: 500px; 
+    height: 40px;
+    outline: none;
+}
+button
+{
+    cursor: pointer;
+    padding: 2px;
+    display: inline;
+    font-weight: 600;
+    font-size: 18px;
+    height: 40px;
+    margin: 10px auto;
+    width: 200px;   
+    background: #A0F8E8;
+    border: 1px solid #FFFFFF;
+    box-shadow: inset 0px 4px 24px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    
+}
+.form-container
+{
+    display: inline;
+    width: 750px;
+    margin: 10px auto;
+    padding: 20px 100px;
+    padding-left: 200px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+
+}
+
+table
+{
+    display: flex;
+    margin: 50px auto;
+    width: max-content;
+    background: azure;
+    align-content: center;
+    border-collapse: collapse;
+    box-shadow: 4px 5px 9px grey;
+}
+td{
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+}
+tr{
+    padding: 30px;
+    text-align: center; 
+    border-bottom: 1px solid black;
+}
+.bar {
+	position:relative;
+    float:left;
+    min-width:1%;
+    height:100%;
+    background: brown;
+}
+.upload-img
+{
+    color:black;
+    font-size: 18px;
+    background-color: aquamarine;;
+    width:200px; 
+    height: 40px;
+    margin-right:20px; 
+    border-radius: 5px; 
+    background-color: #FFFFFF; 
+    box-shadow: none; 
+    font-weight: normal;
+    border: 2px solid rgba(0, 0, 0, 0.5);  
+}
+.upload-img{
+    color:black;
+    font-size: 18px;
+    background-color: aquamarine;
+}
+label{
+    font-size: 15px;
+}

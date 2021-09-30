@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="https://img.icons8.com/fluency/48/000000/facial-recognition-scan.png" type="image/x-icon">
+    <title>Attendance</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="Image/frlogo.jpg" alt="Logo" />
+            <h2>Face Recognization System</h2>
+        </div>
+        <div class="nav-content">
+            <ul id="sitemaps">
+                <li><a href="/">Home</a></li>
+                <li><a href="/attendance.html">Attendance</a></li>
+                <li><a href="">Log out</a></li>
+                <li>
+                    <a><img src="https://img.icons8.com/color/48/000000/test-account.png" /></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcum">
+        <ul id="breadcumb">
+            <li><a href="/">Home</a></li>
+        </ul>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery.breadcrumbs-generator.min.js"></script>
+
+    <script>
+        $(function() {
+            $("#breadcumb").breadcrumbsGenerator({
+                sitemaps: '#sitemaps',
+                index_type: 'index.html'
+            });
+        });
+    </script>
+</body>
+
+</html>
