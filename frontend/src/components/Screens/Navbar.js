@@ -31,7 +31,7 @@ const Navbar = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/attendance">Attendance</Link>
+              <Link to="#">Attendance</Link>
             </li>
             <li>
               <Link to="#" onClick={signOut}>
