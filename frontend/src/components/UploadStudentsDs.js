@@ -33,7 +33,7 @@ const UploadStudent = (props) => {
       .then((data) => {
         console.log(data);
         if(data.url){
-          postData(data.url);
+          postData(data.url,data.public_id);
         }
       })
       .catch((err) => {
@@ -41,7 +41,7 @@ const UploadStudent = (props) => {
       });
   };
 
-  function postData(url){
+  function postData(url,public_id){
     if (url) {
       fetch(
         `http://localhost:4000/api/dataset/uploadStudentDs/${datasetName}`,
@@ -55,6 +55,7 @@ const UploadStudent = (props) => {
             studentName,
             rollNo,
             Image: url,
+            public_id
           }),
         }
       )
@@ -128,7 +129,7 @@ const UploadStudent = (props) => {
               </tr>
               {Object.keys(data).map((student,i) => (
                 <tr>
-                  <td>{i+1}</td>
+                  <td key={i}>{i+1}</td>
                   <td>{data[student].studentName}</td>
                   <td>
                     <img
