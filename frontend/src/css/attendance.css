@@ -1,9 +1,28 @@
+.selectClass{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding: 2px 5px;
+    margin-top:30px;
+}
+
+.selectClass label{
+    font-size:1.3em;
+    font-weight:bolder;
+}
+
+#className{
+    margin:5px;
+    height:24px;
+    outline:none;
+}
+
 .attendContainer{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items:center;
-    padding: 30px;
+    padding: 15px 10px;
 }
 
 .WebCam_container{
