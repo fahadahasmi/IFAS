@@ -1,26 +1,30 @@
-import React, { useRef,useEffect } from "react";
+import React, { useRef,useEffect,useState } from "react";
 import Navbar from "./Screens/Navbar.js";
 import Breadcrumbs from "./Screens/Breadcrumbs.js";
 import * as faceapi from '@vladmandic/face-api';
-// import { loadImage, Canvas, Image, ImageData } from 'canvas';
 import "../css/attendance.css";
 
-// faceapi.env.monkeyPatch({ Canvas, Image, ImageData, fetch });
 const Attendance = () => {
   const videoRef = useRef();
   const canvasRef = useRef();
   const videoContain = useRef();
+  const [studentData, setStudentData] = useState("");
+  const [data, setData] = useState("");
+  const [selectName, setSelectName] = useState("Class Name");
   useEffect(() => {
     const loadModels = async () => {
       const MODEL_URL = process.env.PUBLIC_URL + "/models";
       Promise.all([
         faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
         faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
-        faceapi.nets.ssdMobilenetv1.loadFromUri(MODEL_URL), //heavier/accurate version of tiny face detector
+        faceapi.nets.ssdMobilenetv1.loadFromUri(MODEL_URL), 
       ]);
     };
     loadModels();
+    getData();
   }, []);
+
+  console.log(selectName)
 
   const start = () => {
     videoContain.current.style.display = "flex";
@@ -28,8 +32,8 @@ const Attendance = () => {
       { video: true }
     ).then((stream) => (videoRef.current.srcObject = stream))
     .catch((err) => console.error(err)) 
-      console.log(process.env.PUBLIC_URL);
-    // recognizeFaces();
+    getStudentData();
+    console.log(data)
   };
 
   async function handelVideo() {
@@ -75,13 +79,43 @@ const Attendance = () => {
     });
   }
 
+  
+  function getStudentData() {
+    // eslint-disable-next-line 
+    if(selectName=='Class Name'){
+      console.log('Select a Class');
+    }
+    else{
+      fetch(`http://localhost:4000/api/dataset/uploadStudentDs/${selectName}`)
+      .then((res) => res.json())
+      .then((resp) => {
+        console.log(resp)
+        setStudentData(resp);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    }
+  }
+
+  const getData = async () => {
+    let result = await fetch("http://localhost:4000/api/dataset/upload");
+    result = await result.json();
+    console.log(result);
+    setData(result);
+  };
+
   function loadLabeledImages() {
-    const labels = ["MSD"]; // for WebCam
+    const labels = []; // for WebCam
+    // eslint-disable-next-line 
+    Object.keys(studentData).map((names)=>{
+      labels.push(studentData[names].studentName)
+    })
     return Promise.all(
       labels.map(async (label) => {
         const descriptions = [];
         for (let i = 1; i <= 2; i++) {
-          const img = await faceapi.fetchImage(`MSDhoni.jpg`
+          const img = await faceapi.fetchImage(`https://res.cloudinary.com/fdn1/image/upload/v1633338977/${label}.jpg`
           );
           const detections = await faceapi
             .detectSingleFace(img)
@@ -109,6 +143,15 @@ const Attendance = () => {
     <>
     <Navbar />
     <Breadcrumbs />
+      <div className="selectClass">
+        <label htmlFor="className">Select a Class:</label>
+        <select id="className" value={selectName} onChange={(e)=>setSelectName(e.target.value)}>
+          <option value="Class Name">Class Name</option>
+          {Object.keys(data).map((name,i)=>(
+            <option key={i} value={data[name].datasetName}>{data[name].datasetName}</option>
+              ))}
+        </select>
+      </div>
       <div className="attendContainer">
       <div className="WebCam_container" ref={videoContain}>
         <video
