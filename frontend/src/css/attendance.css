@@ -2,20 +2,18 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items:center;
     padding: 30px;
 }
 
-#videoContainer{
+.WebCam_container{
     display: none;
-    width:700px;
-    height: 650px;
-    margin: 20px auto;
+    width:800px;
+    justify-content:center;
+    align-items:center;
+    height: 550px;
     padding: 10px 5px;
     position:relative;
-}
-
-#video{
-    margin:auto;
 }
 
 #buttons{
@@ -23,13 +21,13 @@
 }
 
 .share{
-    margin:5px;
+    margin:0px 5px;
     border-radius:20px;
     color:white;
 }
 
 canvas{
-    position:relative;
-    top:50px;
-    right:650px;
+    position: absolute;
+    top: 0px;
+    left: 46px;
 }
