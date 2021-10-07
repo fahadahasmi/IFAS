@@ -5,6 +5,16 @@
     font-family: 'Poppins', sans-serif;
 }
 
+body{
+  background-color: ghostwhite;
+}
+
+.login{
+  padding: 3px;
+  border-top: 1px solid navy;
+
+}
+
 .logo1{
   text-align: center;
 }
@@ -15,14 +25,14 @@
     border-radius: 5px;
     display: flex;
     align-items: center;
-    background:azure;
+    background:White;
     flex-direction: column;
     padding: 20px;
     font-size: 15px;
     width: 450px;
     margin: auto;
     margin-top: 50px;
-    max-height:550px;
+    max-height:650px;
     /* background: linear-gradient(62deg, #EE7752, #E73C7E, #bb3dbb, #23D5AB);
      animation: gradient 10s ease infinite; 
       background-size: 400% 400%; */
@@ -31,7 +41,7 @@
 .info {
     height: 330px;
     display: flex;
-    width: 300px;
+    //width: 300px;
     flex-direction: column;
     margin: 0px auto;
 }
@@ -63,12 +73,12 @@ h3 {
   font-weight: 600;
   font-size: 22px;
   font-family: 'Times New Roman', Times, serif;
-  background: linear-gradient(to bottom, #cc99ff 0%, #ff99cc 100%);
-  border: 1px solid #C480E4;
+  background: rgb(16 175 175);
+ // border: 1px solid #C480E4;
   color: white;
     width: 250px;
     height: 45px;
-    background: linear-gradient(to bottom, #cc99ff 0%, #ff99cc 100%);
+   // background: linear-gradient(to bottom, #cc99ff 0%, #ff99cc 100%);
 }
 
 @-webkit-keyframes gradient{
