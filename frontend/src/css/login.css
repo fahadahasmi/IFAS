@@ -41,7 +41,7 @@ body{
 .info {
     height: 330px;
     display: flex;
-    //width: 300px;
+    /* width: 300px; */
     flex-direction: column;
     margin: 0px auto;
 }
@@ -74,11 +74,11 @@ h3 {
   font-size: 22px;
   font-family: 'Times New Roman', Times, serif;
   background: rgb(16 175 175);
- // border: 1px solid #C480E4;
+ /* border: 1px solid #C480E4; */
   color: white;
     width: 250px;
     height: 45px;
-   // background: linear-gradient(to bottom, #cc99ff 0%, #ff99cc 100%);
+   /* background: linear-gradient(to bottom, #cc99ff 0%, #ff99cc 100%); */
 }
 
 @-webkit-keyframes gradient{

@@ -25,7 +25,7 @@ const Home = () => {
                 <h5>Upload dataset</h5>
               </div>
             </Link>
-            <Link to="#">
+            <Link to="/attendRecords">
               <div>
                 <h5>Attendance Records</h5>
               </div>

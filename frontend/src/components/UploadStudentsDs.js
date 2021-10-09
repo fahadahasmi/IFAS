@@ -122,7 +122,7 @@ const UploadStudent = (props) => {
           <table>
             <tbody>
               <tr>
-                <th>Roll No.</th>
+                <th>Sr No.</th>
                 <th>Student's Name</th>
                 <th>Image</th>
                 <th>Action</th>

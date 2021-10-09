@@ -7,6 +7,7 @@ import Home from "./components/Home.js";
 import UploadDataset from "./components/UploadDataset.js";
 import UploadStudent from "./components/UploadStudentsDs.js";
 import Attendance from "./components/Attendance.js";
+import AttendRecords from "./components/AttendRecords.js";
 import Protected from "./components/protected.js";
 
 function App() {
@@ -24,6 +25,9 @@ function App() {
         </Route>
         <Route exact path="/attendance">
           <Protected component={Attendance} />
+        </Route>
+        <Route exact path="/attendRecords">
+          <Protected component={AttendRecords} />
         </Route>
         <Route exact path="/signUp">
           <SignUp />

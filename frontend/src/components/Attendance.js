@@ -65,11 +65,18 @@ const Attendance = () => {
       .getContext("2d")
       .clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
 
+      let attend = [];
+
     const results = resizedDetections.map((d) => {
       const bestMatch = faceMatcher.findBestMatch(d.descriptor);
       console.log(bestMatch.toString());
+
+      attend.push(bestMatch.toString().substring(0,bestMatch.toString().length-6));
       return faceMatcher.findBestMatch(d.descriptor);
     });
+
+    
+
     results.forEach((result, i) => {
       const box = resizedDetections[i].detection.box;
       const drawBox = new faceapi.draw.DrawBox(box, {
@@ -77,6 +84,8 @@ const Attendance = () => {
       });
       drawBox.draw(canvasRef.current);
     });
+
+    console.log(attend)
   }
 
   
