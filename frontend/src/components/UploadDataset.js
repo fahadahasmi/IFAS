@@ -70,7 +70,7 @@ const UploadDataset = () => {
               </tr>
               {Object.keys(data).map((name,ind)=>(
                 <tr>
-      <td>{ind + 1}</td>
+      <td key={ind}>{ind + 1}</td>
       <td>{data[name].datasetName}</td>
       <td>
         <img src="../Image/outline_delete_black_24dp.png" alt="delete" />

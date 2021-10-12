@@ -3,7 +3,6 @@ const router = express.Router();
 const Dataset = require('../models/Datasets.js');
 const StudentDs = require('../models/StudentDs.js');
 const cloudinary = require('cloudinary').v2;
-
 cloudinary.config({
     api_key:process.env.API_KEY,
     api_secret:process.env.API_SECRET,
@@ -50,7 +49,7 @@ router.post('/uploadStudentDs/:name',async (req,res)=>{
     }
     catch(err){
         console.error(err);
-        res.status(500).send("Internal server error");
+        res.status(500).json({'error':"Internal server error"});
     }
 });
 
@@ -93,8 +92,26 @@ router.get('/deletedatasetname/:name',async (req,res)=>{
         res.json(Data)
     }).catch((err)=>{
         console.error(err);
-        res.status(500).send("Internal server error");
+        res.status(500).json({'error':"Internal server error"});
     })
+});
+
+router.get('/deleteStudentDS/:id',async (req,res)=>{
+    console.log(req.params.id)
+    var id = req.params.id
+    let studName = await StudentDs.findById(id)
+    console.log(studName)
+    try {
+        cloudinary.uploader.destroy(studName.studentName)
+         StudentDs.findByIdAndDelete(id).then((Data)=>{
+        res.json(Data)
+    }).catch((err)=>{
+        console.error(err);
+        res.status(500).json({'error':"Internal server error"});
+    })
+    } catch (error) {
+        
+    }
 });
 
 module.exports = router;

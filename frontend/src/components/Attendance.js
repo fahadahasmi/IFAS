@@ -11,6 +11,7 @@ const Attendance = () => {
   const [studentData, setStudentData] = useState("");
   const [data, setData] = useState("");
   const [selectName, setSelectName] = useState("Class Name");
+  let attend = [];
   useEffect(() => {
     const loadModels = async () => {
       const MODEL_URL = process.env.PUBLIC_URL + "/models";
@@ -65,13 +66,13 @@ const Attendance = () => {
       .getContext("2d")
       .clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
 
-      let attend = [];
-
     const results = resizedDetections.map((d) => {
       const bestMatch = faceMatcher.findBestMatch(d.descriptor);
       console.log(bestMatch.toString());
-
-      attend.push(bestMatch.toString().substring(0,bestMatch.toString().length-6));
+      let clean = bestMatch.toString().replace(/[()]/g,"");
+      clean = clean.replace(/\d+([,.]\d+)?/g,"")
+      console.log(clean.substring(0,clean.length-1))
+      attend.push(clean.substring(0,clean.length-1));
       return faceMatcher.findBestMatch(d.descriptor);
     });
 
@@ -86,6 +87,7 @@ const Attendance = () => {
     });
 
     console.log(attend)
+    postAttend()
   }
 
   
@@ -137,6 +139,33 @@ const Attendance = () => {
         return new faceapi.LabeledFaceDescriptors(label, descriptions);
       })
     );
+  }
+
+  function postAttend(){
+    // eslint-disable-next-line 
+    if(selectName=='Class Name'){
+      console.log('Select a Class');
+    }
+    else{
+      attend.map((name)=>{
+        fetch(`http://localhost:4000/api/attend/attend/${selectName}`,{
+      method: "post",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: localStorage.getItem("token"),
+          },
+          body: JSON.stringify({
+            studentName:name,
+            Attendance:'present'
+          }),
+    }).then(res=>res.json())
+    .then((resp)=>{
+      console.log(resp)
+    }).catch((er)=>{
+      console.log(er)
+    })
+      })
+    }
   }
 
   function stop(){

@@ -7,19 +7,18 @@ const AttendRecords = () => {
   const [studentData, setStudentData] = useState("");
   useEffect(()=>{
       getData();
-  
       // eslint-disable-next-line 
   },[]);
 
   
 
-  function getStudentData() {
+  function getAttendanceData() {
     // eslint-disable-next-line 
     if(selectName=='Class Name'){
       console.log('Select a Class');
     }
     else{
-      fetch(`http://localhost:4000/api/dataset/uploadStudentDs/${selectName}`)
+      fetch(`http://localhost:4000/api/attend/attend/${selectName}`)
       .then((res) => res.json())
       .then((resp) => {
         console.log(resp)
@@ -30,13 +29,17 @@ const AttendRecords = () => {
       });
     }
   }
+
+
   const getData = async () => {
     let result = await fetch("http://localhost:4000/api/dataset/upload");
     result = await result.json();
     console.log(result);
     setData(result);
+    
+  getAttendanceData();
   };
-  getStudentData();
+  
   console.log(selectName);
   return (
     <>

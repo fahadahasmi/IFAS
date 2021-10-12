@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const app = express();
 const auth = require('./src/routers/auth.js');
 const dataset = require('./src/routers/dataset.js');
+const attend = require('./src/routers/attend.js');
 const Port = process.env.PORT || 4000;
 const { MONGO_URI } = process.env
 const cors=require("cors");
@@ -33,6 +34,7 @@ mongoose.connect(MONGO_URI, {
 
 app.use('/api/auth', auth);
 app.use('/api/dataset', dataset);
+app.use('/api/attend', attend);
 
 app.listen(Port, () => {
     console.log(`Server running at ${Port}`);

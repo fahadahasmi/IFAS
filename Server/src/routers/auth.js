@@ -38,7 +38,7 @@ router.post('/signUp', [
             id: userModel.id
         }
     }
-    const authToken = jwt.sign(data, JWT_SECRET_KEY);
+    const authToken = jwt.sign(data, JWT_SECRET_KEY,{expiresIn:'30s'});
     userModel.create({
             name,
             email,
@@ -79,7 +79,7 @@ router.post('/signIn', [
             user: { id: user.id }
         }
         console.log(data)
-        const authToken = jwt.sign(data, JWT_SECRET_KEY);
+        const authToken = jwt.sign(data, JWT_SECRET_KEY,{expiresIn:'30s'});
         res.json({ authToken })
     } catch (err) {
         console.log(err);

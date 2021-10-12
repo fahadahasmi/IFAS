@@ -53,7 +53,7 @@ const UploadStudent = (props) => {
           },
           body: JSON.stringify({
             studentName,
-            rollNo,
+            RollNo:rollNo,
             Image: url,
             public_id
           }),
@@ -81,6 +81,19 @@ const UploadStudent = (props) => {
         console.log(err);
       });
   }
+
+function deleteStudentData(id){
+  console.log(id)
+  fetch(`http://localhost:4000/api/dataset/deleteStudentDS/${id}`)
+  .then((res)=>res.json())
+  .then((resp)=>{
+    console.log(resp)
+    getStudentData();
+    })
+  .catch((er)=>console.log(er))
+  
+}
+
 
   return (
     <>
@@ -141,7 +154,7 @@ const UploadStudent = (props) => {
                   <td>
                     <img
                       src="../Image/outline_delete_black_24dp.png"
-                      alt="delete"
+                      alt="delete" onClick={()=>{deleteStudentData(data[student]._id)}}
                     />
                     <img
                       src="../Image/outline_edit_black_24dp.png"
