@@ -135,14 +135,14 @@ function deleteStudentData(id){
           <table>
             <tbody>
               <tr>
-                <th>Sr No.</th>
+                <th>Roll No.</th>
                 <th>Student's Name</th>
                 <th>Image</th>
                 <th>Action</th>
               </tr>
               {Object.keys(data).map((student,i) => (
                 <tr>
-                  <td key={i}>{i+1}</td>
+                  <td key={i}>{data[student].RollNo}</td>
                   <td>{data[student].studentName}</td>
                   <td>
                     <img

@@ -15,8 +15,8 @@ const AttendanceRecords = mongoose.Schema({
     Image:{
         type:String
     },
-    date:{
-        type:Date,
+    Date:{
+        type:String
     },
     Attendance:{
         type:String,

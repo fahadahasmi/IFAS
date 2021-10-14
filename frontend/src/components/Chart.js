@@ -1,31 +1,43 @@
-import React from 'react';
-import {Bar} from 'react-chartjs-2';
+import React from "react";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  CartesianGrid,
+} from "recharts";
 
 const Chart = () => {
+  const data = [
+    { name: "FE Comps", Strength: 40, amt:100 },
+    { name: "SE Comps", Strength: 50, amt: 100 },
+    { name: "TE Comps", Strength: 45, amt: 100 },
+    { name: "BE Comps", Strength: 30, amt: 100 },
+  ];
+  return (
+    <>
+      <BarChart width={730} height={250} data={data}>
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip wrapperStyle={{ width: 120, backgroundColor: "#ccc" }} />
+        <Legend
+          width={120}
+          wrapperStyle={{
+            top: 5,
+            right: 5,
+            backgroundColor: "#f5f5f5",
+            border: "1px solid #d5d5d5",
+            borderRadius: 3,
+            lineHeight: "40px",
+          }}
+        />
+        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        <Bar dataKey="Strength" fill="#005555" />
+      </BarChart>
+    </>
+  );
+};
 
-    const data = canvas => {
-    const ctx = canvas.getContext('2d');
-    const g = ctx.createLinearGradient(20,0, 220,0);
-
-    return {
-        labels:['FE Comps','SE Comps','TE Comps','BE Comps'],
-        datasets:[{
-            label: 'Attendance',
-            data:[40,34,24,23,43],
-            backgroundColor:g,
-            borderColor:['rgba(33,23,80,0.8)'],
-            borderWidth:3
-        }
-        ],
-    };
-}
-
-
-    return (
-        <>
-            <Bar data={data} width={600} height={400} />
-        </>
-    )
-}
-
-export default Chart
+export default Chart;
