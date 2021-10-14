@@ -37,8 +37,8 @@ const UploadDataset = () => {
     setData(result);
   };
 
-  async function deleteDataset(){
-    let deleteDataset = await fetch("http://localhost:4000/api/dataset/upload");
+  async function deleteDataset(datasetName){
+    let deleteDataset = await fetch(`http://localhost:4000/api/dataset/deletedatasetname/${datasetName}`);
     deleteDataset = await deleteDataset.json();
     console.log(deleteDataset);
     getData();
@@ -80,7 +80,7 @@ const UploadDataset = () => {
       <td key={ind}>{ind + 1}</td>
       <td>{data[name].datasetName}</td>
       <td>
-        <img src="../Image/outline_delete_black_24dp.png" alt="delete" onClick={deleteDataset} />
+        <img src="../Image/outline_delete_black_24dp.png" alt="delete" onClick={()=>{deleteDataset(data[name].datasetName)}} />
         <img src="../Image/outline_edit_black_24dp.png" alt="edit" />
         <Link to={'/uploadStud/'+data[name].datasetName}><img
           src="https://img.icons8.com/material-sharp/24/000000/upload--v2.png"

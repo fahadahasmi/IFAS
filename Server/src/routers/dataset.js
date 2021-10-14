@@ -98,7 +98,6 @@ router.get("/deletedatasetname/:name", async (req, res) => {
   console.log(req.params.name);
   StudentDs.findOneAndDelete(
     { className: req.params.name },
-    { className }
   ).catch((err) => {
     console.error(err);
     res.status(500).json({ error: "Internal server error" });
