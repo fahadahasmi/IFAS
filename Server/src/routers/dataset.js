@@ -38,6 +38,7 @@ router.post("/uploadStudentDs/:name", async (req, res) => {
   try {
     cloudinary.uploader.rename(public_id, studentName, (err, result) => {
       console.log(result);
+
       StudentDs.create({
         className: req.params.name,
         studentName,
@@ -78,7 +79,7 @@ router.get("/uploadStudentDs/:name", async (req, res) => {
 router.post("/editdatasetname/:name", async (req, res) => {
   const { datasetName } = req.body;
   console.log(req.params.name);
-  Dataset.findOneAndUpdateOne(
+  Dataset.findOneAndUpdate(
     {
       datasetName: req.params.name,
     },
@@ -86,6 +87,21 @@ router.post("/editdatasetname/:name", async (req, res) => {
   )
     .then((Data) => {
       res.json(Data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Internal server error");
+    });
+    StudentDs.updateMany(
+      {
+        className:req.params.name
+      },
+      {
+        className:datasetName,
+      },
+    )
+    .then((Data) => {
+      console.log(Data);
     })
     .catch((err) => {
       console.error(err);
