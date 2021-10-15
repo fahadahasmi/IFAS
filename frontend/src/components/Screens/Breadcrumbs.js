@@ -1,18 +1,38 @@
-import React,{useRef} from "react";
+import React,{useRef,useState} from "react";
 import {Link} from 'react-router-dom';
 import useBreadcrumbs from 'use-react-router-breadcrumbs';
 
 const Breadcrumbs = () => {
   const sidebar = useRef("0px");
   const breadcrumbs = useBreadcrumbs();
+  const [profile,setProfile] = useState();
+  const [isProf,setIsprof] = useState(false);
   
 
   function openSidebar(){
-    sidebar.current.style.width = '300px';
+    sidebar.current.style.width = '350px';
+    userInfo()
   }
 
   function closeSidebar(){
     sidebar.current.style.width = '0px';
+  }
+
+  function userInfo(){
+    fetch("http://localhost:4000/api/auth/user", {
+      method: "POST",
+      headers: {
+        "auth-Token": localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setProfile(data)
+        setIsprof(true)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
@@ -34,8 +54,12 @@ const Breadcrumbs = () => {
           </Link>
           <div className="Profile">
             <img src="https://img.icons8.com/color/48/000000/test-account.png" alt="img"></img>
-            <h2>ABCD</h2>
-            <p>AnasImamShaikh@gmail.com</p>
+            {
+              isProf?              <>
+              <h1>{profile.name}</h1>
+              <p>{profile.email}</p>
+              </>:false
+            }
           </div>
           <hr>
           </hr>
@@ -48,6 +72,6 @@ const Breadcrumbs = () => {
       </div>
     </>
   );
-};
+  }
 
 export default Breadcrumbs;

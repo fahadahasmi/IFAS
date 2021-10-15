@@ -82,7 +82,7 @@ const AttendRecords = () => {
       <td key={ind}>{studentData[name].RollNo}</td>
       <td>{studentData[name].studentName}</td>
       <td><img src={studentData[name].Image} alt="Student" style={{width:60,height:60}} /></td>
-    <td>Present</td>
+      <td style={{color:"green"}}>{studentData[name].Attendance}</td>
     </tr>
               ))}
             </tbody>

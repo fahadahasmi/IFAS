@@ -11,14 +11,14 @@ import {
 
 const Chart = () => {
   const data = [
-    { name: "FE Comps", Strength: 40, amt:100 },
-    { name: "SE Comps", Strength: 50, amt: 100 },
-    { name: "TE Comps", Strength: 45, amt: 100 },
-    { name: "BE Comps", Strength: 30, amt: 100 },
+    { name: "FE Comps", Strength: 4, amt:100 },
+    { name: "SE Comps", Strength: 5, amt: 100 },
+    { name: "TE Comps", Strength: 3, amt: 100 },
+    { name: "BE Comps", Strength: 1, amt: 100 },
   ];
   return (
     <>
-      <BarChart width={730} height={250} data={data}>
+      <BarChart width={700} height={550} data={data}>
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip wrapperStyle={{ width: 120, backgroundColor: "#ccc" }} />

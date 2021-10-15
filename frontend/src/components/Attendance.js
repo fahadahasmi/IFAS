@@ -171,7 +171,7 @@ const Attendance = () => {
             RollNo:studentData[stud].RollNo,
             Image:studentData[stud].Image,
             Date:selectDate,
-            Attendance:'present'
+            Attendance:'Present'
           }),
             }).then((res)=>res.json())
             .then((resp)=>{
