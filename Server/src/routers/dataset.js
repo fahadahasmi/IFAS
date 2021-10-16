@@ -109,6 +109,30 @@ router.post("/editdatasetname/:name", async (req, res) => {
     });
 });
 
+router.post('/editStudentData/:id',async (req,res)=>{
+  const {studentName,RollNo,Image,public_id} = req.body
+  console.log(req.params.id);
+  try{
+      let stud = await StudentDs.findById(req.params.id)
+      console.log(stud);
+      cloudinary.uploader.rename(public_id,studentName,(err,result)=>{
+          console.log(result)
+          StudentDs.findByIdAndUpdate(req.params.id,{
+              studentName,
+              RollNo,
+              Image
+          }).then((data)=>{
+                res.json(data);
+            }).catch((err)=>{
+                console.log(err);
+            })
+        })
+    }
+    catch(er){
+        console.log(er)
+    }
+});
+
 router.get("/deletedatasetname/:name", async (req, res) => {
   const { datasetName } = req.body;
   console.log(req.params.name);
