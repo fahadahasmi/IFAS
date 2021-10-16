@@ -33,7 +33,7 @@ const UploadDataset = () => {
   };
 
   function editDs(name) {
-    setPrevData(datasetName)
+    setPrevData(name)
     setDatasetName(name);
     setIsAdd(false);
   }
