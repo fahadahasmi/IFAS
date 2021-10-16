@@ -9,6 +9,7 @@ const UploadStudent = (props) => {
   const [selectedFile, setSelectedFile] = useState("");
   // const [url, setURL] = useState("");
   const [data, setData] = useState("");
+  const [prevData, setPrevData] = useState("");
   const { datasetName } = useParams();
   console.log(datasetName);
 
@@ -34,6 +35,8 @@ const UploadStudent = (props) => {
         console.log(data);
         if(data.url){
           postData(data.url,data.public_id);
+          public_id(data.public_id,data.url);
+          
         }
       })
       .catch((err) => {
@@ -92,6 +95,41 @@ function deleteStudentData(id){
     })
   .catch((er)=>console.log(er))
   
+}
+
+function editStudentData(id,Name,Img,RollNo){
+  console.log(id)
+  setStudentName(Name)
+  setRollNo(RollNo)
+  let url
+  
+  fetch(`http://localhost:4000/api/dataset/editStudentData/${id}`,{
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        studentName:Name,
+        RollNo:RollNo,
+        Image:Img,
+        public_id:Name,
+      }),
+  }
+  )
+
+  .then((res)=>res.json())
+  .then((resp)=>{
+    console.log(resp)
+    getStudentData();
+    })
+    
+  .catch((er)=>console.log(er))
+
+}
+
+function public_id(img_id,url){
+  return [img_id,url]
 }
 
 
@@ -158,7 +196,8 @@ function deleteStudentData(id){
                     />
                     <img
                       src="../Image/outline_edit_black_24dp.png"
-                      alt="edit"
+                      alt="edit" onClick={()=>{editStudentData(data[student]._id,data[student].studentName,data[student].Image,
+                        data[student].RollNo)}}
                     />
                   </td>
                 </tr>
