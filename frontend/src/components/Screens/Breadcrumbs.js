@@ -45,12 +45,12 @@ const Breadcrumbs = () => {
             </li>
           </ul>
           <span id="openNav" onClick={openSidebar}>
-            <img src="https://img.icons8.com/fluency-systems-regular/25/000000/menu--v1.png"  alt="img"/>
+          <img src="https://img.icons8.com/ios/25/000000/menu--v3.png"  alt="img"/>
           </span>
         </div>
         <div id="sideNav" ref={sidebar} >
           <Link to="#" id="closeNav" onClick={closeSidebar}>
-            ×
+          <img src="https://img.icons8.com/ios/35/000000/delete-sign--v3.png" alt="" />
           </Link>
           <div className="Profile">
             <img src="https://img.icons8.com/color/48/000000/test-account.png" alt="img"></img>

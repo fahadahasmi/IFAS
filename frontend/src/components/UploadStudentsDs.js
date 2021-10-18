@@ -190,15 +190,17 @@ function public_id(img_id,url){
                     />
                   </td>
                   <td>
-                    <img
+                    <img class="Delete"
                       src="../Image/outline_delete_black_24dp.png"
                       alt="delete" onClick={()=>{deleteStudentData(data[student]._id)}}
                     />
-                    <img
+                    <img class="Edit"
                       src="../Image/outline_edit_black_24dp.png"
                       alt="edit" onClick={()=>{editStudentData(data[student]._id,data[student].studentName,data[student].Image,
                         data[student].RollNo)}}
                     />
+                    {/* <div class="hide">Delete</div>
+                    <div class="hide">Edit</div> */}
                   </td>
                 </tr>
               ))}
