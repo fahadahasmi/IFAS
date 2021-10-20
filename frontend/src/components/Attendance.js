@@ -7,14 +7,12 @@ import "../css/attendance.css";
 const Attendance = () => {
   const videoRef = useRef();
   const canvasRef = useRef();
-  const startBtnRef = useRef();
-  const stopBtnRef = useRef();
   const videoContain = useRef();
   const [studentData, setStudentData] = useState("");
   const [data, setData] = useState("");
   const [selectName, setSelectName] = useState("Class Name");
   let today = new Date();
-  const [selectDate, setSelectDate] = useState(today.toISOString().slice(0,10));
+  const [selectDate, setSelectDate] = useState(today.toLocaleDateString());
   let attend = [];
   useEffect(() => {
     const loadModels = async () => {
@@ -33,23 +31,13 @@ const Attendance = () => {
   console.log(selectDate);
 
   const start = () => {
-    if (selectName !== "Class Name") {
-      navigator.mediaDevices
-        .getDisplayMedia({ video: true })
-        .then((stream) => {
-          if (stream) {
-            startBtnRef.current.style.display = "none";
-            stopBtnRef.current.style.display = "block";
-            videoRef.current.srcObject = stream;
-            videoContain.current.style.display = "flex";
-          }
-        })
-        .catch((err) => console.error(err));
-      getStudentData();
-      console.log(data);
-    } else {
-      alert("Please select a class name");
-    }
+    videoContain.current.style.display = "flex";
+    navigator.mediaDevices
+      .getDisplayMedia({ video: true })
+      .then((stream) => (videoRef.current.srcObject = stream))
+      .catch((err) => console.error(err));
+    getStudentData();
+    console.log(data);
   };
 
   async function handelVideo() {
@@ -170,29 +158,28 @@ const Attendance = () => {
       Object.keys(studentData).map((stud) => {
         // eslint-disable-next-line
         attend.map((name) => {
-          if (name === studentData[stud].studentName) {
+          if (name === studentData[stud].studentName){
             console.log(name + " present");
-            fetch(`http://localhost:4000/api/attend/attend/${selectName}`, {
+            fetch(`http://localhost:4000/api/attend/attend/${selectName}`,{
               method: "post",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: localStorage.getItem("token"),
-              },
-              body: JSON.stringify({
-                studentName: studentData[stud].studentName,
-                RollNo: studentData[stud].RollNo,
-                Image: studentData[stud].Image,
-                Date: selectDate,
-                Attendance: "present",
-              }),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: localStorage.getItem("token"),
+          },
+          body: JSON.stringify({
+            studentName:studentData[stud].studentName,
+            RollNo:studentData[stud].RollNo,
+            Image:studentData[stud].Image,
+            Date:selectDate,
+            Attendance:'present'
+          }),
+            }).then((res)=>res.json())
+            .then((resp)=>{
+              console.log(resp);
             })
-              .then((res) => res.json())
-              .then((resp) => {
-                console.log(resp);
-              })
-              .catch((e) => {
-                console.log(e);
-              });
+            .catch((e)=>{
+              console.log(e)
+            })
           }
         });
       });
@@ -201,11 +188,10 @@ const Attendance = () => {
 
   function stop() {
     let tracks = videoRef.current.srcObject.getTracks();
+
     tracks.forEach((track) => track.stop());
     videoRef.current.srcObject = null;
     videoContain.current.style.display = "none";
-    stopBtnRef.current.style.display = "none";
-    startBtnRef.current.style.display = "block";
     canvasRef.current
       .getContext("2d")
       .clearRect(0, 0, 100, canvasRef.current.width, canvasRef.current.height);
@@ -230,12 +216,8 @@ const Attendance = () => {
           ))}
         </select>
         <label htmlFor="className">Select a Date:</label>
-        <input
-          type="date"
-          style={{ width: "135px", height: "33px" }}
-          value={selectDate}
-          onChange={(e) => setSelectDate(e.target.value)}
-        />
+        <input type="date" style={{width:'135px', height:'33px'}} value={selectDate}
+          onChange={(e) => setSelectDate(e.target.value)} />
       </div>
       <div className="attendContainer">
         <div className="WebCam_container" ref={videoContain}>
@@ -260,15 +242,13 @@ const Attendance = () => {
             className="share"
             style={{ background: "#25c948" }}
             onClick={start}
-            ref={startBtnRef}
           >
             Start share
           </button>
           <button
             className="share"
-            style={{ display: "none", background: "#f74848" }}
+            style={{ background: "#f74848" }}
             onClick={stop}
-            ref={stopBtnRef}
           >
             Stop share
           </button>

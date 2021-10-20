@@ -20,13 +20,13 @@ function App() {
         <Route exact path="/upload">
           <Protected component={UploadDataset} />
         </Route>
-        <Route exact path="/upload students/:datasetName">
+        <Route exact path="/uploadStud/:datasetName">
           <Protected component={UploadStudent} />
         </Route>
         <Route exact path="/attendance">
           <Protected component={Attendance} />
         </Route>
-        <Route exact path="/Records">
+        <Route exact path="/attendRecords">
           <Protected component={AttendRecords} />
         </Route>
         <Route exact path="/signUp">

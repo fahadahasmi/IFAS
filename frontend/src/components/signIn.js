@@ -62,19 +62,19 @@ const SignIn = () => {
               type="password"
               name="pswd"
               className="inputfield"
-              placeholder="Password"
+              placeholder="*******"
               required
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
             />
-            <button className="btn">Login</button>
-            <div id="login" className="l-line">
-              <GoogleAuth />
+            <button className=" btn inputfield">Login</button>
+            <div className="l-line login">
               <h3>
                 Don't have an account? <Link to="/signUp">Sign Up</Link>
               </h3>
+              <GoogleAuth />
             </div>
           </div>
         </form>

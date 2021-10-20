@@ -38,7 +38,7 @@ router.post('/signUp', [
             id: userModel.id
         }
     }
-    const authToken = jwt.sign(data, JWT_SECRET_KEY,{expiresIn:'1h'});
+    const authToken = jwt.sign(data, JWT_SECRET_KEY,{expiresIn:'30s'});
     userModel.create({
             name,
             email,
@@ -46,7 +46,7 @@ router.post('/signUp', [
             institute_name,
             password: encryptPassword
         }).then((savedUser) => {
-            res.json({ authToken,expiresIn:3600 });
+            res.json({ authToken });
         })
         .catch((err) => {
             console.error(err);
@@ -79,8 +79,8 @@ router.post('/signIn', [
             user: { id: user.id }
         }
         console.log(data)
-        const authToken = jwt.sign(data, JWT_SECRET_KEY,{expiresIn:'1h'});
-        res.json({ authToken,expiresIn:3600 })
+        const authToken = jwt.sign(data, JWT_SECRET_KEY,{expiresIn:'30s'});
+        res.json({ authToken })
     } catch (err) {
         console.log(err);
         res.status(500).send("Internal server error");
@@ -144,8 +144,8 @@ router.post('/googleAuth',async (req,res)=>{
         }
     }
     console.log(data);
-    const authToken = jwt.sign(data, JWT_SECRET_KEY,{expiresIn:'1h'});
-    res.json({authToken,expiresIn:3600});
+    const authToken = jwt.sign(data, JWT_SECRET_KEY);
+    res.json({authToken});
 })
 
 module.exports = router;

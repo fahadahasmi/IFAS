@@ -7,7 +7,7 @@ const AttendRecords = () => {
   const [studentData, setStudentData] = useState("");
   const showTable = useRef('');
    let today = new Date();
-  const [selectDate, setSelectDate] = useState(today.toISOString().slice(0,10));
+  const [selectDate, setSelectDate] = useState(today.toLocaleDateString());
   useEffect(()=>{
       getData();
       // eslint-disable-next-line 

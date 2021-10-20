@@ -104,16 +104,16 @@ const SignUp = () => {
               value={password}
               required
             />
-            <button className="btn" type="submit">
+            <button className=" btn1" type="submit">
               Sign Up
             </button>
-          </form>
-          <div id="login">
+            <div id="login">
               <GoogleAuth />
               <p>
                 Already have an account? <Link to="/signIn">Login</Link>
               </p>
             </div>
+          </form>
         </section>
       </div>
     </div>
