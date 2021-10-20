@@ -20,7 +20,7 @@ input
     height: 40px;
     margin: 5px auto;
     width: 200px;   
-    background: #171d69;
+    background-color: #005555;
     border: 1px solid #FFFFFF;
     box-shadow: inset 0px 4px 24px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
@@ -30,7 +30,8 @@ input
     position: relative;
     bottom:2px;
     left:2px;
-    background: #172d69;
+    background: rgba(95, 189, 158, 0.644);
+    color: #523f3f;
 }
 
 .cont

@@ -5,9 +5,13 @@ import Breadcrumbs from "./Screens/Breadcrumbs.js";
 import "../css/UploadStudent.css";
 const UploadStudent = (props) => {
   const [studentName, setStudentName] = useState("");
+  const [preStudentName, setPreStudentName] = useState("");
   const [rollNo, setRollNo] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
+  const [image, setImage] = useState("");
+  const [Id,setId] = useState('');
   // const [url, setURL] = useState("");
+  const [isAdd, setIsAdd] = useState(true);
   const [data, setData] = useState("");
   const { datasetName } = useParams();
   console.log(datasetName);
@@ -33,7 +37,7 @@ const UploadStudent = (props) => {
       .then((data) => {
         console.log(data);
         if(data.url){
-          postData(data.url,data.public_id);
+          postData(data.url,data.public_id,data.signature);
         }
       })
       .catch((err) => {
@@ -41,7 +45,7 @@ const UploadStudent = (props) => {
       });
   };
 
-  function postData(url,public_id){
+  function postData(url,public_id,signature){
     if (url) {
       fetch(
         `http://localhost:4000/api/dataset/uploadStudentDs/${datasetName}`,
@@ -49,13 +53,14 @@ const UploadStudent = (props) => {
           method: "post",
           headers: {
             "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
+            'Authorization': localStorage.getItem("token"),
           },
           body: JSON.stringify({
             studentName,
             RollNo:rollNo,
             Image: url,
-            public_id
+            public_id,
+            signature
           }),
         }
       )
@@ -82,6 +87,105 @@ const UploadStudent = (props) => {
       });
   }
 
+  function editStudentData(id,RollNo,Name,Image){
+    setId(id);    
+    setPreStudentName(Name);
+    setStudentName(Name);
+    setRollNo(RollNo);
+    setImage(Image);
+    setIsAdd(false)
+  }
+
+  function editStudent(){
+    console.log(Id);
+    console.log(preStudentName,studentName, rollNo, selectedFile);
+    if(selectedFile){
+      const data = new FormData();
+    data.append("file", selectedFile);
+    data.append("upload_preset", "FaceRecognition");
+    // data.append("cloud_name", "fdn1");
+    // data.append("api_key", "948386741555972");
+    // data.append("api_secret", "J7U0jEwc4lP-7fFgl1wD299H-ME");
+    // data.append("public_id", studentName);
+    // data.append('overwrite', false);
+
+    fetch("https://api.cloudinary.com/v1_1/fdn1/image/upload", {
+      method: "post",
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if(data.url){
+          editData(data.url,data.public_id,data.signature);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    }
+    else{
+      console.log(image);
+      fetch(
+        `http://localhost:4000/api/dataset/editStudentData/${Id}`,
+        {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+            'Authorization': localStorage.getItem("token"),
+          },
+          body: JSON.stringify({
+            studentName,
+            RollNo:rollNo,
+            Image: image,
+            public_id:preStudentName,
+          }),
+        }
+      )
+        .then((res) => res.json())
+        .then((resp) => {
+          console.log(resp);
+          getStudentData();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    setIsAdd(true)
+  }
+  
+  
+  function editData(url,public_id,signature){
+    if (url) {
+      fetch(
+        `http://localhost:4000/api/dataset/editStudentData/${Id}`,
+        {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+            'Authorization': localStorage.getItem("token"),
+          },
+          body: JSON.stringify({
+            studentName,
+            RollNo:rollNo,
+            Image: url,
+            prevImage:preStudentName,
+            public_id,
+            signature
+          }),
+        }
+      )
+        .then((res) => res.json())
+        .then((resp) => {
+          console.log(resp);
+          getStudentData();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }
+
 function deleteStudentData(id){
   console.log(id)
   fetch(`http://localhost:4000/api/dataset/deleteStudentDS/${id}`)
@@ -99,8 +203,8 @@ function deleteStudentData(id){
     <>
       <Navbar />
       <Breadcrumbs />
-      <div>
-        <form>
+      <div className="uploadstdform">
+        <form className='stdform'>
           <input
             type="text"
             name="studentName"
@@ -129,7 +233,10 @@ function deleteStudentData(id){
             }}
             required
           />
-          <input type="button" value="Add Student"  onClick={submit} />
+          {
+            isAdd?<input type="button" value="Add Student" className='stdformbtn'  onClick={submit} />:
+            <input type="button" value="Edit Student" className='stdformbtn'  onClick={editStudent} />
+          }
         </form>
         <div>
           <table>
@@ -158,7 +265,7 @@ function deleteStudentData(id){
                     />
                     <img
                       src="../Image/outline_edit_black_24dp.png"
-                      alt="edit"
+                      alt="edit" onClick={()=>{editStudentData(data[student]._id,data[student].RollNo,data[student].studentName,data[student].Image)}}
                     />
                   </td>
                 </tr>

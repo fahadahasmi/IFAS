@@ -7,7 +7,7 @@ const checkLogin = (req, res, next) => {
         res.status(401).json({ error: "Unauthorized access, please use a valid token." });
     }
     try {
-        const data = jwt.verify(token, JWT_SECRET_KEY,{expiresIn:'30s'});
+        const data = jwt.verify(token, JWT_SECRET_KEY);
         req.user = data.user;
         next();
     } catch (err) {

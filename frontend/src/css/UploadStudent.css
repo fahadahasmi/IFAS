@@ -94,17 +94,16 @@ label{
     margin-top: 5px;
 }
 .stdformbtn{
-    background-color: rgb(95, 189, 157);
-    border-radius: 10px;
-    border:solid 2px #000000;
+    background-color: #005555;
     text-decoration: none;
-    color: #523f3f;
+    color: #fffbfb;
     font-weight: 800;
     font-variant: small-caps;
     font-size: large;
 }
 .stdformbtn:hover{
     background: rgba(95, 189, 158, 0.644);
+    color: #523f3f;
 }
 .uploadstdform{
     margin-top: 30px;

@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const StudentDs = require('./StudentDs.js');
 
 const AttendanceRecords = mongoose.Schema({
     className:{
@@ -9,14 +8,16 @@ const AttendanceRecords = mongoose.Schema({
         type:String
     },
     RollNo:{
-        type:Number
+        type:Number,
+        unique:true,
     }
     ,
     Image:{
         type:String
     },
     Date:{
-        type:String
+        type:String,
+        unique:true,
     },
     Attendance:{
         type:String,

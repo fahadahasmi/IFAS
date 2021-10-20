@@ -6,6 +6,8 @@ import "../css/UploadDataset.css";
 // import {Link} from 'react-router-dom';
 const UploadDataset = () => {
   const [data, setData] = useState("");
+  const [prevData, setPrevData] = useState("");
+  const [isAdd, setIsAdd] = useState(true);
   useEffect(() => {
     getData();
   }, []);
@@ -37,6 +39,18 @@ const UploadDataset = () => {
     setData(result);
   };
 
+  function editDs(name){
+    setPrevData(name)
+    setDatasetName(name);
+    console.log(datasetName)
+    console.log(prevData)
+    setIsAdd(false);
+  }
+
+  function editSubmit(){
+    setIsAdd(true)
+  }
+
   console.log(typeof data);
 
   return (
@@ -55,10 +69,14 @@ const UploadDataset = () => {
               setDatasetName(e.target.value);
             }}
           />
-          <button type="button" className="addDataset" onClick={submit}>
-            {" "}
-            Add Dataset
+          {
+            isAdd?<button type="button" className="addDataset" onClick={submit}>
+            Add Student
+          </button>:
+          <button type="button" className="addDataset" onClick={editSubmit}>
+            Edit
           </button>
+          }
         </div>
         <div>
           <table>
@@ -74,8 +92,8 @@ const UploadDataset = () => {
       <td>{data[name].datasetName}</td>
       <td>
         <img src="../Image/outline_delete_black_24dp.png" alt="delete" />
-        <img src="../Image/outline_edit_black_24dp.png" alt="edit" />
-        <Link to={'/uploadStud/'+data[name].datasetName}><img
+        <img src="../Image/outline_edit_black_24dp.png" alt="edit" onClick={()=>editDs(data[name].datasetName)} />
+        <Link to={'/upload students/'+data[name].datasetName}><img
           src="https://img.icons8.com/material-sharp/24/000000/upload--v2.png"
           alt="upload" 
         /></Link>

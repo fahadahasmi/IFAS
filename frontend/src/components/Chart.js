@@ -1,4 +1,3 @@
-import React from "react";
 import {
   BarChart,
   Bar,
@@ -8,18 +7,27 @@ import {
   Legend,
   CartesianGrid,
 } from "recharts";
-
+import { useState, useEffect } from "react";
 const Chart = () => {
-  const data = [
-    { name: "FE Comps", Strength: 40, amt:100 },
-    { name: "SE Comps", Strength: 50, amt: 100 },
-    { name: "TE Comps", Strength: 45, amt: 100 },
-    { name: "BE Comps", Strength: 30, amt: 100 },
-  ];
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    getData();
+    // eslint-disable-next-line
+  }, []);
+
+  const getData = async () => {
+    let data = [];
+    let result = await fetch("http://localhost:4000/api/dataset/studCount");
+    result = await result.json();
+    console.log(result);
+    data.push(result);
+    console.log(data);
+    setData(result)
+  }
   return (
-    <>
-      <BarChart width={730} height={250} data={data}>
-        <XAxis dataKey="name" />
+    <div id="chart">
+      <BarChart width={730} height={400} data={data}>
+        <XAxis dataKey="datasetName" />
         <YAxis />
         <Tooltip wrapperStyle={{ width: 120, backgroundColor: "#ccc" }} />
         <Legend
@@ -36,7 +44,7 @@ const Chart = () => {
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
         <Bar dataKey="Strength" fill="#005555" />
       </BarChart>
-    </>
+    </div>
   );
 };
 
