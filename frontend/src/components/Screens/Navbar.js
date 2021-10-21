@@ -42,10 +42,10 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="#">
+              <Link to="/profile">
                 <img
                   src="https://img.icons8.com/color/48/000000/test-account.png"
-                  alt="img"
+                  alt="img" 
                 />
               </Link>
             </li>

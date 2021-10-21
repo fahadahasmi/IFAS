@@ -9,6 +9,7 @@ import UploadStudent from "./components/UploadStudentsDs.js";
 import Attendance from "./components/Attendance.js";
 import AttendRecords from "./components/AttendRecords.js";
 import Protected from "./components/protected.js";
+import Profile from "./components/profile.js";
 
 function App() {
   return (
@@ -29,8 +30,12 @@ function App() {
         <Route exact path="/attendRecords">
           <Protected component={AttendRecords} />
         </Route>
+        <Route exact path="/profile">
+          <Protected component={Profile} />
+        </Route>
         <Route exact path="/signUp">
-          <SignUp />
+        <SignUp />  
+          
         </Route>
         <Route exact path="/signIn">
           <SignIn />
