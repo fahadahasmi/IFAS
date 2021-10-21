@@ -53,10 +53,10 @@ const Breadcrumbs = () => {
           <img src="https://img.icons8.com/ios/35/000000/delete-sign--v3.png" alt="" />
           </Link>
           <div className="Profile">
-            <img src="https://img.icons8.com/color/48/000000/test-account.png" alt="img"></img>
+            <img src="https://img.icons8.com/color/35/000000/test-account.png" alt="img"></img>
             {
               isProf?              <>
-              <h1>{profile.name}</h1>
+              <h2>{profile.name}</h2>
               <p>{profile.email}</p>
               </>:false
             }

@@ -22,8 +22,7 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <div className="logo">
-          <img src="/Image/frlogo.jpg" alt="Logo" />
-          <h2>Face Recognization System</h2>
+          <img src="logo.jpg" alt="Logo ka maka bosda" />
         </div>
         <div className="nav-content">
           <ul id="sitemaps">

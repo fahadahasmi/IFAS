@@ -12,7 +12,7 @@ export default function profile() {
       <section id="lef-pro">
         <div class="Pro-Container">
           <div class="Pro-card">
-            <img src="Image/user.png" class="Profile-img" alt="Profile" />
+            <img src="https://img.icons8.com/color/48/000000/test-account.png" class="Profile-img" alt="Profile" />
             <div class="overlay">
               <div class="Edit-icon">
                 <img
