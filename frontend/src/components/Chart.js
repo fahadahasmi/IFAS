@@ -7,25 +7,32 @@ import {
   Legend,
   CartesianGrid,
 } from "recharts";
-import { useState, useEffect } from "react";
-const Chart = () => {
+import { useState, useEffect} from "react";
+
+const Chart = (props) => {
   const [data, setData] = useState([]);
-  useEffect(() => {
+  const [load, setLoad] = useState(false);
+  useEffect(()=>{
     getData();
-    // eslint-disable-next-line
+    // eslint-disable-next-line 
   }, []);
 
-  const getData = async () => {
-    let data = [];
-    let result = await fetch("http://localhost:4000/api/dataset/studCount");
+  async function getData() {
+    console.log(props)
+    let result = await fetch(
+      `http://localhost:4000/api/dataset/studCount/${props.name}`
+    );
     result = await result.json();
-    console.log(result);
-    data.push(result);
-    console.log(data);
-    setData(result)
+    setData(result);
   }
+
+  if(load===false && props.name===''){
+    getData();
+    setLoad(true);
+  }
+
   return (
-    <div id="chart">
+     <div id="chart">
       <BarChart width={730} height={400} data={data}>
         <XAxis dataKey="datasetName" />
         <YAxis />
@@ -44,7 +51,7 @@ const Chart = () => {
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
         <Bar dataKey="Strength" fill="#005555" />
       </BarChart>
-    </div>
+      </div>
   );
 };
 

@@ -1,6 +1,8 @@
-import React, { useEffect, useState,useRef } from "react";
+import React, { useEffect, useState,useRef,useContext } from "react";
 import Navbar from "./Screens/Navbar.js";
 import Breadcrumbs from "./Screens/Breadcrumbs.js";
+import { userData } from "./Context/userContext.js";
+
 const AttendRecords = () => {
   const [selectName, setSelectName] = useState("Class Name");
   const [data, setData] = useState("");
@@ -8,6 +10,7 @@ const AttendRecords = () => {
   const showTable = useRef('');
    let today = new Date();
   const [selectDate, setSelectDate] = useState(today.toISOString().slice(0,10));
+  const userName = useContext(userData);
   useEffect(()=>{
       getData();
       // eslint-disable-next-line 
@@ -35,7 +38,7 @@ const AttendRecords = () => {
   
 
   const getData = async () => {
-    let result = await fetch("http://localhost:4000/api/dataset/upload");
+    let result = await fetch(`http://localhost:4000/api/dataset/upload/${userName.name}`);
     result = await result.json();
     console.log(result);
     setData(result);

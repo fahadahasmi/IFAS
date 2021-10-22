@@ -8,9 +8,10 @@ cloudinary.config({
   api_secret: process.env.API_SECRET,
   cloud_name: process.env.CLOUD_NAME,
 });
-router.post("/upload", async (req, res) => {
+router.post("/upload/:name", async (req, res) => {
   const { datasetName } = req.body;
   Dataset.create({
+    userName:req.params.name,
     datasetName,
   })
     .then((Data) => {
@@ -21,8 +22,8 @@ router.post("/upload", async (req, res) => {
       res.status(500).send("Internal server error");
     });
 });
-router.get("/upload", async (req, res) => {
-  Dataset.find({})
+router.get("/upload/:name", async (req, res) => {
+  Dataset.find({userName:req.params.name})
     .then((Data) => {
       res.json(Data);
     })
@@ -75,10 +76,10 @@ router.get("/uploadStudentDs/:name", async (req, res) => {
   }
 });
 
-router.get("/studCount", async (req, res) => {
+router.get("/studCount/:name", async (req, res) => {
   try {
     let resp1 = [];
-    let Data = await Dataset.find({});
+    let Data = await Dataset.find({userName:req.params.name});
     Object.keys(Data).map(async (data) => {
       let resp = await StudentDs.find({ className: Data[data].datasetName });
       resp1[resp1.length] = {

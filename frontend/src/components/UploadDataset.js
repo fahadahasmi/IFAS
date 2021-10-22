@@ -6,14 +6,17 @@ import "../css/UploadDataset.css";
 // import {Link} from 'react-router-dom';
 const UploadDataset = () => {
   const [data, setData] = useState("");
+  const [name, setName] = useState("");
   const [prevData, setPrevData] = useState("");
   const [isAdd, setIsAdd] = useState(true);
   useEffect(() => {
+    userInfo();
     getData();
+    // eslint-disable-next-line
   }, []);
   const [datasetName, setDatasetName] = useState("");
   const submit = async () => {
-    fetch("http://localhost:4000/api/dataset/upload", {
+    fetch(`http://localhost:4000/api/dataset/upload/${name.name}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,10 +35,26 @@ const UploadDataset = () => {
       });
   };
 
+  function userInfo(){
+    fetch("http://localhost:4000/api/auth/user", {
+      method: "POST",
+      headers:{
+        'auth-token':localStorage.getItem('token'),
+      }
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setName(data);
+        getData();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   const getData = async () => {
-    let result = await fetch("http://localhost:4000/api/dataset/upload");
+    let result = await fetch(`http://localhost:4000/api/dataset/upload/${name.name}`);
     result = await result.json();
-    console.log(result);
     setData(result);
   };
 
@@ -46,12 +65,10 @@ const UploadDataset = () => {
     console.log(prevData)
     setIsAdd(false);
   }
-
+  getData();
   function editSubmit(){
     setIsAdd(true)
   }
-
-  console.log(typeof data);
 
   return (
     <>

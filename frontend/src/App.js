@@ -6,9 +6,10 @@ import SignIn from "./components/signIn.js";
 import Home from "./components/Home.js";
 import UploadDataset from "./components/UploadDataset.js";
 import UploadStudent from "./components/UploadStudentsDs.js";
-import Attendance from "./components/Attendance.js";
-import AttendRecords from "./components/AttendRecords.js";
+// import Attendance from "./components/Attendance.js";
+// import AttendRecords from "./components/AttendRecords.js";
 import Protected from "./components/protected.js";
+import { Usercontext } from "./components/Context/userContext";
 
 function App() {
   return (
@@ -24,10 +25,10 @@ function App() {
           <Protected component={UploadStudent} />
         </Route>
         <Route exact path="/attendance">
-          <Protected component={Attendance} />
+          <Protected component={Usercontext} />
         </Route>
         <Route exact path="/Records">
-          <Protected component={AttendRecords} />
+          <Protected component={Usercontext} />
         </Route>
         <Route exact path="/signUp">
           <SignUp />

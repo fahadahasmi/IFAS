@@ -1,7 +1,8 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState,useContext } from "react";
 import Navbar from "./Screens/Navbar.js";
 import Breadcrumbs from "./Screens/Breadcrumbs.js";
 import * as faceapi from "@vladmandic/face-api";
+import { userData } from "./Context/userContext.js";
 import "../css/attendance.css";
 
 const Attendance = () => {
@@ -16,7 +17,9 @@ const Attendance = () => {
   let today = new Date();
   const [selectDate, setSelectDate] = useState(today.toISOString().slice(0,10));
   let attend = [];
+  const userName = useContext(userData);
   useEffect(() => {
+    getData();
     const loadModels = async () => {
       const MODEL_URL = process.env.PUBLIC_URL + "/models";
       Promise.all([
@@ -26,11 +29,11 @@ const Attendance = () => {
       ]);
     };
     loadModels();
-    getData();
   }, []);
 
   console.log(selectName);
   console.log(selectDate);
+  console.log(userName.name);
 
   const start = () => {
     if (selectName !== "Class Name") {
@@ -119,8 +122,9 @@ const Attendance = () => {
     }
   }
 
+
   const getData = async () => {
-    let result = await fetch("http://localhost:4000/api/dataset/upload");
+    let result = await fetch(`http://localhost:4000/api/dataset/upload/${userName.name}`);
     result = await result.json();
     console.log(result);
     setData(result);

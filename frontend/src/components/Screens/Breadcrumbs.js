@@ -9,7 +9,7 @@ const Breadcrumbs = () => {
   const [isProf,setIsprof] = useState(false);
 
   function openSidebar(){
-    sidebar.current.style.width = '300px';
+    sidebar.current.style.width = '350px';
     userInfo();
   }
 
@@ -57,7 +57,7 @@ const Breadcrumbs = () => {
             <img src="https://img.icons8.com/color/48/000000/test-account.png" alt="img"></img>
             {
               isProf?              <>
-              <h1>{profile.name}</h1>
+              <h2>{profile.name}</h2>
               <p>{profile.email}</p>
               </>:false
             }
