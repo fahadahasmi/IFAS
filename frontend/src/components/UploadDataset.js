@@ -6,14 +6,17 @@ import "../css/UploadDataset.css";
 // import {Link} from 'react-router-dom';
 const UploadDataset = () => {
   const [data, setData] = useState("");
+  const [name, setName] = useState("");
+  const [prevData, setPrevData] = useState("");
+  const [isAdd, setIsAdd] = useState(true);
   useEffect(() => {
+    userInfo();
     getData();
+    // eslint-disable-next-line
   }, []);
   const [datasetName, setDatasetName] = useState("");
-  const [isAdd, setIsAdd] = useState(true);
-  const [prevData, setPrevData] = useState("");
   const submit = async () => {
-    fetch("http://localhost:4000/api/dataset/upload", {
+    fetch(`http://localhost:4000/api/dataset/upload/${name.name}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,52 +35,42 @@ const UploadDataset = () => {
       });
   };
 
-  function editDs(name) {
-    setPrevData(name)
-    setDatasetName(name);
-    setIsAdd(false);
-  }
-
-  function editSubmit() {
-    console.log(datasetName)
-    console.log(prevData)
-    fetch(`http://localhost:4000/api/dataset/editdatasetname/${prevData}`, {
+  function userInfo() {
+    fetch("http://localhost:4000/api/auth/user", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
       },
-      body: JSON.stringify({
-        datasetName,
-      }),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        setName(data);
         getData();
       })
       .catch((err) => {
         console.log(err);
       });
-      setIsAdd(true)
   }
 
   const getData = async () => {
-    let result = await fetch("http://localhost:4000/api/dataset/upload");
+    let result = await fetch(
+      `http://localhost:4000/api/dataset/upload/${name.name}`
+    );
     result = await result.json();
-    console.log(result);
     setData(result);
   };
 
-  async function deleteDataset(datasetName) {
-    let deleteDataset = await fetch(
-      `http://localhost:4000/api/dataset/deletedatasetname/${datasetName}`
-    );
-    deleteDataset = await deleteDataset.json();
-    console.log(deleteDataset);
-    getData();
+  function editDs(name) {
+    setPrevData(name);
+    setDatasetName(name);
+    console.log(datasetName);
+    console.log(prevData);
+    setIsAdd(false);
   }
-
-  console.log(typeof data);
+  getData();
+  function editSubmit() {
+    setIsAdd(true);
+  }
 
   return (
     <>
@@ -121,18 +114,13 @@ const UploadDataset = () => {
                     <img
                       src="../Image/outline_delete_black_24dp.png"
                       alt="delete"
-                      onClick={() => {
-                        deleteDataset(data[name].datasetName);
-                      }}
                     />
                     <img
                       src="../Image/outline_edit_black_24dp.png"
                       alt="edit"
-                      onClick={() => {
-                        editDs(data[name].datasetName);
-                      }}
+                      onClick={() => editDs(data[name].datasetName)}
                     />
-                    <Link to={"/uploadStud/" + data[name].datasetName}>
+                    <Link to={"/upload students/" + data[name].datasetName}>
                       <img
                         src="https://img.icons8.com/material-sharp/24/000000/upload--v2.png"
                         alt="upload"

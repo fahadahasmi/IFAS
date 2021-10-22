@@ -6,10 +6,13 @@ import SignIn from "./components/signIn.js";
 import Home from "./components/Home.js";
 import UploadDataset from "./components/UploadDataset.js";
 import UploadStudent from "./components/UploadStudentsDs.js";
-import Attendance from "./components/Attendance.js";
-import AttendRecords from "./components/AttendRecords.js";
+// import Attendance from "./components/Attendance.js";
+// import AttendRecords from "./components/AttendRecords.js";
 import Protected from "./components/protected.js";
+
 import Profile from "./components/profile.js";
+
+import { Usercontext } from "./components/Context/userContext";
 
 function App() {
   return (
@@ -21,21 +24,21 @@ function App() {
         <Route exact path="/upload">
           <Protected component={UploadDataset} />
         </Route>
-        <Route exact path="/uploadStud/:datasetName">
+        <Route exact path="/upload students/:datasetName">
           <Protected component={UploadStudent} />
         </Route>
         <Route exact path="/attendance">
-          <Protected component={Attendance} />
+          <Protected component={Usercontext} />
         </Route>
-        <Route exact path="/attendRecords">
-          <Protected component={AttendRecords} />
+
+        <Route exact path="/Records">
+          <Protected component={Usercontext} />
         </Route>
         <Route exact path="/profile">
           <Protected component={Profile} />
         </Route>
         <Route exact path="/signUp">
-        <SignUp />  
-          
+          <SignUp />
         </Route>
         <Route exact path="/signIn">
           <SignIn />

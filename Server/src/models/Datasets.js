@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
 const DatasetName = mongoose.Schema({
+    userName:{
+        type:String,
+    },
     datasetName:{
         type:String,
         required:true

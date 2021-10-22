@@ -22,7 +22,7 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <div className="logo">
-          <img src="logo.jpg" alt="Logo ka maka bosda" />
+          <h2>IFAS</h2>
         </div>
         <div className="nav-content">
           <ul id="sitemaps">
@@ -44,7 +44,7 @@ const Navbar = () => {
               <Link to="/profile">
                 <img
                   src="https://img.icons8.com/color/48/000000/test-account.png"
-                  alt="img" 
+                  alt="img"
                 />
               </Link>
             </li>

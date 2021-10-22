@@ -9,17 +9,35 @@ import {
   CartesianGrid,
 } from "recharts";
 
-const Chart = () => {
-  const data = [
-    { name: "FE Comps", Strength: 4, amt:100 },
-    { name: "SE Comps", Strength: 5, amt: 100 },
-    { name: "TE Comps", Strength: 3, amt: 100 },
-    { name: "BE Comps", Strength: 1, amt: 100 },
-  ];
+import { useState, useEffect } from "react";
+
+const Chart = (props) => {
+  const [data, setData] = useState([]);
+  const [load, setLoad] = useState(false);
+  useEffect(() => {
+    getData();
+    // eslint-disable-next-line
+  }, []);
+
+  async function getData() {
+    console.log(props);
+    let result = await fetch(
+      `http://localhost:4000/api/dataset/studCount/${props.name}`
+    );
+    result = await result.json();
+    setData(result);
+  }
+
+  if (load === false && props.name === "") {
+    getData();
+    setLoad(true);
+  }
+
   return (
-    <>
-      <BarChart width={700} height={550} data={data}>
-        <XAxis dataKey="name" />
+    <div id="chart">
+      <BarChart width={730} height={400} data={data}>
+        <XAxis dataKey="datasetName" />
+
         <YAxis />
         <Tooltip wrapperStyle={{ width: 120, backgroundColor: "#ccc" }} />
         <Legend
@@ -36,7 +54,7 @@ const Chart = () => {
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
         <Bar dataKey="Strength" fill="#005555" />
       </BarChart>
-    </>
+    </div>
   );
 };
 
