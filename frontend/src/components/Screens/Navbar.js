@@ -22,7 +22,7 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <div className="logo">
-          <h2>IFAS</h2>
+          <img src="/Image/Logo.jpg" alt="#"></img>
         </div>
         <div className="nav-content">
           <ul id="sitemaps">

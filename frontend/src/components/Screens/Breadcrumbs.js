@@ -9,7 +9,7 @@ const Breadcrumbs = () => {
   const [isProf, setIsprof] = useState(false);
 
   function openSidebar() {
-    sidebar.current.style.width = "350px";
+    sidebar.current.style.width = "340px";
 
     userInfo();
   }

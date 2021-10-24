@@ -4,6 +4,7 @@ import Chart from "./Chart";
 import React, { useState, useEffect } from 'react';
 import Breadcrumbs from "./Screens/Breadcrumbs";
 import Navbar from "./Screens/Navbar";
+import ContactUs from "./Screens/ContactUs";
 
 const Home = () => {
   const history = useHistory()
@@ -67,6 +68,11 @@ const Home = () => {
         <section id="chartSection">
           <div className="chart">
               {isName?(<Chart name={name} />):null}
+          </div>
+        </section>
+        <section id="ContactUs">
+          <div className="contact">
+              <ContactUs />
           </div>
         </section>
       </div>

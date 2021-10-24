@@ -90,7 +90,7 @@ const UploadDataset = () => {
           />
           {isAdd ? (
             <button type="button" className="addDataset" onClick={submit}>
-              Add Student
+              Add Dataset
             </button>
           ) : (
             <button type="button" className="addDataset" onClick={editSubmit}>
