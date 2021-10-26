@@ -9,6 +9,7 @@ import UploadStudent from "./components/UploadStudentsDs.js";
 // import Attendance from "./components/Attendance.js";
 // import AttendRecords from "./components/AttendRecords.js";
 import Protected from "./components/protected.js";
+import { Usercontext } from "./components/Context/userContext";
 
 import Profile from "./components/profile.js";
 
@@ -33,9 +34,11 @@ function App() {
 
         <Route exact path="/Records">
           <Protected component={Usercontext} />
+
         </Route>
         <Route exact path="/profile">
           <Protected component={Profile} />
+
         </Route>
         <Route exact path="/signUp">
           <SignUp />

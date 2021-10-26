@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
+
 import Navbar from "./Screens/Navbar.js";
 import Breadcrumbs from "./Screens/Breadcrumbs.js";
 import { userData } from "./Context/userContext.js";
@@ -9,12 +10,10 @@ const AttendRecords = () => {
   const [studentData, setStudentData] = useState("");
   const showTable = useRef("");
   let today = new Date();
-
   const [selectDate, setSelectDate] = useState(
     today.toISOString().slice(0, 10)
   );
   const userName = useContext(userData);
-
   useEffect(() => {
     getData();
     // eslint-disable-next-line
@@ -44,6 +43,7 @@ const AttendRecords = () => {
     let result = await fetch(
       `http://localhost:4000/api/dataset/upload/${userName.name}`
     );
+
     result = await result.json();
     console.log(result);
     setData(result);

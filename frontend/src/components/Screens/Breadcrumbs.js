@@ -10,7 +10,6 @@ const Breadcrumbs = () => {
 
   function openSidebar() {
     sidebar.current.style.width = "340px";
-
     userInfo();
   }
 
@@ -57,18 +56,14 @@ const Breadcrumbs = () => {
             />
           </Link>
           <div className="Profile">
-            <img
-              src="https://img.icons8.com/color/35/000000/test-account.png"
-              alt="img"
-            ></img>
-            {isProf ? (
-              <>
-                <h2>{profile.name}</h2>
-                <p>{profile.email}</p>
-              </>
-            ) : (
-              false
-            )}
+
+            <img src="https://img.icons8.com/color/48/000000/test-account.png" alt="img"></img>
+            {
+              isProf?              <>
+              <h2>{profile.name}</h2>
+              <p>{profile.email}</p>
+              </>:false
+            }
           </div>
           <hr></hr>
 

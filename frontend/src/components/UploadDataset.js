@@ -1,6 +1,6 @@
 import Navbar from "./Screens/Navbar.js";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import {Link} from 'react-router-dom';
 import Breadcrumbs from "./Screens/Breadcrumbs.js";
 import "../css/UploadDataset.css";
 // import {Link} from 'react-router-dom';
@@ -35,12 +35,12 @@ const UploadDataset = () => {
       });
   };
 
-  function userInfo() {
+  function userInfo(){
     fetch("http://localhost:4000/api/auth/user", {
       method: "POST",
-      headers: {
-        "auth-token": localStorage.getItem("token"),
-      },
+      headers:{
+        'auth-token':localStorage.getItem('token'),
+      }
     })
       .then((res) => res.json())
       .then((data) => {
@@ -53,23 +53,21 @@ const UploadDataset = () => {
   }
 
   const getData = async () => {
-    let result = await fetch(
-      `http://localhost:4000/api/dataset/upload/${name.name}`
-    );
+    let result = await fetch(`http://localhost:4000/api/dataset/upload/${name.name}`);
     result = await result.json();
     setData(result);
   };
 
-  function editDs(name) {
-    setPrevData(name);
+  function editDs(name){
+    setPrevData(name)
     setDatasetName(name);
-    console.log(datasetName);
-    console.log(prevData);
+    console.log(datasetName)
+    console.log(prevData)
     setIsAdd(false);
   }
   getData();
-  function editSubmit() {
-    setIsAdd(true);
+  function editSubmit(){
+    setIsAdd(true)
   }
 
   return (
@@ -88,15 +86,14 @@ const UploadDataset = () => {
               setDatasetName(e.target.value);
             }}
           />
-          {isAdd ? (
-            <button type="button" className="addDataset" onClick={submit}>
-              Add Dataset
-            </button>
-          ) : (
-            <button type="button" className="addDataset" onClick={editSubmit}>
-              Edit
-            </button>
-          )}
+          {
+            isAdd?<button type="button" className="addDataset" onClick={submit}>
+            Add Student
+          </button>:
+          <button type="button" className="addDataset" onClick={editSubmit}>
+            Edit
+          </button>
+          }
         </div>
         <div>
           <table>
@@ -106,28 +103,19 @@ const UploadDataset = () => {
                 <th>Class</th>
                 <th>Action</th>
               </tr>
-              {Object.keys(data).map((name, ind) => (
+              {Object.keys(data).map((name,ind)=>(
                 <tr>
-                  <td key={ind}>{ind + 1}</td>
-                  <td>{data[name].datasetName}</td>
-                  <td>
-                    <img
-                      src="../Image/outline_delete_black_24dp.png"
-                      alt="delete"
-                    />
-                    <img
-                      src="../Image/outline_edit_black_24dp.png"
-                      alt="edit"
-                      onClick={() => editDs(data[name].datasetName)}
-                    />
-                    <Link to={"/upload students/" + data[name].datasetName}>
-                      <img
-                        src="https://img.icons8.com/material-sharp/24/000000/upload--v2.png"
-                        alt="upload"
-                      />
-                    </Link>
-                  </td>
-                </tr>
+      <td key={ind}>{ind + 1}</td>
+      <td>{data[name].datasetName}</td>
+      <td>
+        <img src="../Image/outline_delete_black_24dp.png" alt="delete" />
+        <img src="../Image/outline_edit_black_24dp.png" alt="edit" onClick={()=>editDs(data[name].datasetName)} />
+        <Link to={'/upload students/'+data[name].datasetName}><img
+          src="https://img.icons8.com/material-sharp/24/000000/upload--v2.png"
+          alt="upload" 
+        /></Link>
+      </td>
+    </tr>
               ))}
             </tbody>
           </table>
@@ -138,3 +126,4 @@ const UploadDataset = () => {
 };
 
 export default UploadDataset;
+

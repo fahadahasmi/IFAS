@@ -14,6 +14,7 @@ import { useState, useEffect } from "react";
 const Chart = (props) => {
   const [data, setData] = useState([]);
   const [load, setLoad] = useState(false);
+
   useEffect(() => {
     getData();
     // eslint-disable-next-line
@@ -21,6 +22,7 @@ const Chart = (props) => {
 
   async function getData() {
     console.log(props);
+
     let result = await fetch(
       `http://localhost:4000/api/dataset/studCount/${props.name}`
     );

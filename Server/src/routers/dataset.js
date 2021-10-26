@@ -77,7 +77,6 @@ router.get("/uploadStudentDs/:name", async (req, res) => {
   }
 });
 
-
 router.get("/studCount/:name", async (req, res) => {
   try {
     let resp1 = [];
