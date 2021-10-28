@@ -7,7 +7,11 @@
 .mainSection{
     display:flex;
     margin: 30px auto;  
+<<<<<<< HEAD
     box-shadow: 3px 3px 5px 1px #000000;
+=======
+    box-shadow: 3px 3px 3px 1px #000000;
+>>>>>>> 909a0b2a26b80cb9ec3978b862994a1c13c918b2
     width: 800px;
 }
 
@@ -34,7 +38,11 @@
 
 .imgCont{
     width:100%;
+<<<<<<< HEAD
     height:50%;
+=======
+    height:60%;
+>>>>>>> 909a0b2a26b80cb9ec3978b862994a1c13c918b2
 }
 
 .imgCont canvas{
@@ -54,7 +62,11 @@
 }
 
 #Logo img{
+<<<<<<< HEAD
     width: 250px;
+=======
+    width: 350px;
+>>>>>>> 909a0b2a26b80cb9ec3978b862994a1c13c918b2
 }
 
 .formCont{
@@ -65,7 +77,10 @@
     text-align: center;
     font-size: 25px;
     font-weight: bolder;
+<<<<<<< HEAD
     padding: 0px;
+=======
+>>>>>>> 909a0b2a26b80cb9ec3978b862994a1c13c918b2
 }
 
 .formFields{
@@ -95,7 +110,11 @@
 .formFields button:hover{
     cursor:pointer;
     transition: 0.5s ease-in;
+<<<<<<< HEAD
     background:#038373;
+=======
+    background:#119292;
+>>>>>>> 909a0b2a26b80cb9ec3978b862994a1c13c918b2
 }
 
 .formCont div{

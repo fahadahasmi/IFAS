@@ -17,7 +17,7 @@ router.post("/attend/:name", async (req, res) => {
     });
     console.log(students);
     if(students==null){
-       AttendRecords.updateOne(
+       AttendRecords.create(
       {
         className: req.params.name,
         studentName,
@@ -25,7 +25,7 @@ router.post("/attend/:name", async (req, res) => {
         Date,
         Image,
         Attendance,
-      },{upsert:true}
+      }
     )
       .then((data) => {
         console.log(data)

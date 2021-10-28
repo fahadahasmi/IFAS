@@ -60,6 +60,17 @@ tr{
     text-align: center; 
     border-bottom: 1px solid black;
 }
+
+td img{
+    cursor: pointer;
+
+}
+td img:hover{
+   transition: all 0.1s linear;
+   transform: scale(1.25);
+    
+    
+}
 .bar {
 	position:relative;
     float:left;
@@ -96,17 +107,38 @@ label{
     margin-top: 5px;
 }
 .stdformbtn{
-    background-color: #005555;
+    background-color: rgb(95, 189, 157);
+    border-radius: 10px;
+    border:solid 2px #000000;
     text-decoration: none;
-    color: #fffbfb;
+    color: #523f3f;
     font-weight: 800;
     font-variant: small-caps;
     font-size: large;
 }
 .stdformbtn:hover{
     background: rgba(95, 189, 158, 0.644);
-    color: #523f3f;
 }
 .uploadstdform{
     margin-top: 30px;
 }
+/* .hide1 {
+    display: none;
+  }
+.hide2 {
+    display: none;
+  } 
+ .Delete:hover + .hide1{
+    display: block;
+    height: 10px;
+    
+
+ }
+ .Edit:hover + .hide2{
+    display: block;
+    height: 5px;
+    background-color: #000000;
+    color: #FFFFFF;
+
+
+ } */

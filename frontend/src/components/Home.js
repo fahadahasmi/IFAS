@@ -4,35 +4,30 @@ import Chart from "./Chart";
 import React, { useState, useMemo } from 'react';
 import Breadcrumbs from "./Screens/Breadcrumbs";
 import Navbar from "./Screens/Navbar";
+import ContactUs from "./Screens/ContactUs";
 
 const Home = () => {
-  const history = useHistory()
-  const [name, setName] = useState('');
+  const history = useHistory();
+  const [name, setName] = useState("");
   const [isName, setIsName] = useState(false);
   useMemo(() => {
     userInfo();
     console.log(Date.now());
     setTimeout(() => {
-      console.log('After 10s logout');
+      console.log("After 10s logout");
       localStorage.clear();
       history.push('/signIn')
     }, 3600*1000);
     // eslint-disable-next-line 
-  }, []);
-
-  userInfo();
-
-  function userInfo() {
-    fetch("http://localhost:4000/api/auth/user", {
       method: "POST",
       headers: {
-        'auth-token': localStorage.getItem('token'),
-      }
+        "auth-token": localStorage.getItem("token"),
+      },
     })
       .then((res) => res.json())
       .then((data) => {
         setName(data.name);
-        setIsName(true)
+        setIsName(true);
       })
       .catch((err) => {
         console.log(err);
@@ -41,7 +36,6 @@ const Home = () => {
   return (
     <>
       <div>
-
         <Navbar />
 
         <Breadcrumbs />
@@ -66,10 +60,13 @@ const Home = () => {
           </div>
         </section>
         <section id="chartSection">
-          <div className="chart">
-              {isName?(<Chart name={name} />):null}
-          </div>
+          <div className="chart">{isName ? <Chart name={name} /> : null}</div>
         </section>
+        {/* <section id="ContactUs">
+          <div className="contact">
+            <ContactUs />
+          </div>
+        </section> */}
       </div>
     </>
   );

@@ -33,12 +33,15 @@ const Navbar = () => {
               <Link to="/attendance">Attendance</Link>
             </li>
             <li>
+              <Link to="/upload">Dataset</Link>
+            </li>
+            <li>
               <Link to="#" onClick={signOut}>
                 Logout
               </Link>
             </li>
             <li>
-              <Link to="#">
+              <Link to="/profile">
                 <img
                   src="https://img.icons8.com/color/48/000000/test-account.png"
                   alt="img"

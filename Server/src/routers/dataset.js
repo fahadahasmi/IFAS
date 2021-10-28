@@ -37,8 +37,9 @@ router.post("/uploadStudentDs/:name", async (req, res) => {
   const { className, studentName, RollNo, Image, public_id } = req.body;
   console.log(req.params.name);
   try {
-    cloudinary.uploader.rename(public_id, studentName,{ overwrite: false }, (err, result) => {
+    cloudinary.uploader.rename(public_id, studentName, (err, result) => {
       console.log(result);
+
       StudentDs.create({
         className: req.params.name,
         studentName,
@@ -227,5 +228,6 @@ router.get("/deleteStudentDS/:id", async (req, res) => {
       });
   } catch (error) {}
 });
+
 
 module.exports = router;

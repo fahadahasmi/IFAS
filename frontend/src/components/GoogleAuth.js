@@ -3,7 +3,7 @@ import { GoogleLogin } from "react-google-login";
 import { useHistory } from "react-router";
 const GoogleAuth = () => {
   const history = useHistory();
-
+  
   const responseGoogle = (resp) => {
     console.log(resp.tokenId);
     fetch("http://localhost:4000/api/auth/googleAuth", {
@@ -95,5 +95,7 @@ const GoogleAuth = () => {
     </>
   );
 };
+
+
 
 export default GoogleAuth;

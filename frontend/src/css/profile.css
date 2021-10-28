@@ -1,0 +1,86 @@
+/* profile-Css */
+*{
+    margin: 0%;
+    padding: 0%;
+    font-family: sans-serif;
+}
+
+#lef-pro{
+    display: flex;
+    margin:30px 20px 0px;
+}
+
+.Pro-Container{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #ffffff;
+    text-decoration-color: antiquewhite;
+    text-transform: capitalize;
+    margin: 20px;
+}
+
+.Pro-card{
+    margin: auto ;
+}
+
+.Pro-card h2{
+    margin: 10px;
+}
+
+.Profile-img{
+    height: 100px;
+    width: 100px;
+    margin-left: 80px;
+    
+}
+
+
+.Pro-main{
+    cursor: pointer;
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+a{
+    margin: 10px;
+}
+
+
+.Pro-main p img{
+    margin: 7px;
+}
+.pass{
+    border: none;
+    background: none;
+    text-decoration: none;
+    font-display: none;
+}
+
+/* halfright conatiner */
+
+.Right-box {
+    display: flex;
+    flex-direction: column;
+    background-color: ghostwhite;
+    height: 300px;
+    width: 700px;
+    margin-top: 70px;
+}
+
+h1.abt {
+    margin: 20px 40px;
+}
+
+.short h3 {
+    margin-left: 30px;
+}
+
+.short {
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+

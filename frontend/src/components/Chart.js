@@ -1,3 +1,4 @@
+import React from "react";
 import {
   BarChart,
   Bar,
@@ -7,18 +8,21 @@ import {
   Legend,
   CartesianGrid,
 } from "recharts";
-import { useState, useEffect} from "react";
+
+import { useState, useEffect } from "react";
 
 const Chart = (props) => {
   const [data, setData] = useState([]);
   const [load, setLoad] = useState(false);
-  useEffect(()=>{
+
+  useEffect(() => {
     getData();
-    // eslint-disable-next-line 
+    // eslint-disable-next-line
   }, []);
 
   async function getData() {
-    console.log(props)
+    console.log(props);
+
     let result = await fetch(
       `http://localhost:4000/api/dataset/studCount/${props.name}`
     );
@@ -26,15 +30,16 @@ const Chart = (props) => {
     setData(result);
   }
 
-  if(load===false && props.name===''){
+  if (load === false && props.name === "") {
     getData();
     setLoad(true);
   }
 
   return (
-     <div id="chart">
+    <div id="chart">
       <BarChart width={730} height={400} data={data}>
         <XAxis dataKey="datasetName" />
+
         <YAxis />
         <Tooltip wrapperStyle={{ width: 120, backgroundColor: "#ccc" }} />
         <Legend
@@ -51,7 +56,7 @@ const Chart = (props) => {
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
         <Bar dataKey="Strength" fill="#005555" />
       </BarChart>
-      </div>
+    </div>
   );
 };
 
