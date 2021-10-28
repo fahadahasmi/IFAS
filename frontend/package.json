@@ -22,6 +22,7 @@
     "react-tsparticles": "^1.36.0",
     "recharts": "^2.1.4",
     "use-react-router-breadcrumbs": "^2.0.2",
+    "vanta": "^0.5.21",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

@@ -23,7 +23,7 @@ const SignUp = () => {
         minWidth: 200.00,
         scale: 1.00,
         scaleMobile: 1.00,
-        color: '#005555',
+        color: '#038373',
         shininess: 21.00,
         waveHeight: 6.50,
         waveSpeed: 2.00,
