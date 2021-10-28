@@ -67,11 +67,11 @@ const Home = () => {
         <section id="chartSection">
           <div className="chart">{isName ? <Chart name={name} /> : null}</div>
         </section>
-        <section id="ContactUs">
+        {/* <section id="ContactUs">
           <div className="contact">
             <ContactUs />
           </div>
-        </section>
+        </section> */}
       </div>
     </>
   );

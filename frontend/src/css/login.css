@@ -5,101 +5,142 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body{
-  background-color: ghostwhite;
+/* body{
+  background-color: #49b6b6;;
 }
 
-.login{
-  padding: 3px;
-  border-top: 1px solid navy;
-
-}
-
-.logo1{
-  text-align: center;
-}
+#root{
+  height: 500px;
+    background: rgba(245, 245, 245, 0.541);
+    margin-bottom: 20px;
+} */
 
 .container1 {
+
     letter-spacing: 0.05em;
-    box-shadow: 0 2px 10px rgba(rgb(199, 154, 154), rgb(135, 223, 135), rgb(159, 159, 224), alpha);
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    background:White;
-    flex-direction: column;
-    padding: 20px;
-    font-size: 15px;
-    width: 450px;
-    margin: auto;
-    margin-top: 50px;
-    max-height:650px;
-    /* background: linear-gradient(62deg, #EE7752, #E73C7E, #bb3dbb, #23D5AB);
-     animation: gradient 10s ease infinite; 
-      background-size: 400% 400%; */
+    display:flex;
+    margin: 30px auto;  
+    box-shadow: 3px 3px 3px 1px #000000;
+    width: 800px;
+    margin-top: 100px;
 }
 
-.info {
-    height: 330px;
-    display: flex;
-    /* width: 300px; */
-    flex-direction: column;
-    margin: 0px auto;
+.lefty{
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  background: #005555;
 }
-
-
-.inputfield {
-    width: 250px;
-    height: 35px;
-    border: 3px solid rgb(18 75 123 / 40%);
-    border-radius: 5px;
-    padding-left: 5px;
-    outline: none;
-    margin: 10px 0px;
+.googleBtn{
+  margin: 30px ;
 }
-
-.text {
-    display: flex;
-    align-items: center;
-    height: 35px;
-    padding: 0px 1px;
-}
-
-h3 {
-    font-size: 18px;
-    padding: 10px 0px 10px;
-}
-
-.btn{  
-  font-weight: 600;
-  font-size: 22px;
-  font-family: 'Times New Roman', Times, serif;
-  background: rgb(16 175 175);
- /* border: 1px solid #C480E4; */
+.googleBtn h2{
+  text-align: center;
+  
+  /* margin: 30px 0px 0px -106px; */
   color: white;
-    width: 250px;
-    height: 45px;
-   /* background: linear-gradient(to bottom, #cc99ff 0%, #ff99cc 100%); */
+}
+.logo1{
+  position: relative;
+  width: 100%;
+  height: 60%;
 }
 
-@-webkit-keyframes gradient{
-    0% {
-      background-position: 0 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-       background-position: 0% 50%;
-    }
-  }
-  @keyframes gradient{
-    0% {
-      background-position: 0 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-       background-position: 0% 50%;
-    }
-  }
+.logo1 canvas{
+  border-bottom-right-radius: 40%;
+}
+
+button{
+  cursor: pointer;
+  padding: 2px;
+  font-weight: bolder;
+  font-size: 18px;
+  height: 40px;
+  width: 200px;
+  border: 1px solid #ffffff;
+  box-shadow: inset 0px 4px 24px rgb(0 0 0 / 25%);
+  border-radius: 20px;
+  display: flex;
+  background: rgb(80, 187, 186);
+  margin: 42px 20px 18px 140px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.righty{
+  display: flex;
+  flex-direction: column;
+  padding: 5px 30px;
+  width: 400px;
+  background: white;
+  height: 500px;
+}
+#Logo{
+  margin-top: 10px;
+}
+#Logo img{
+  width: 250px;
+  margin: 20px;
+  padding-left: 20px;
+}
+
+.info{
+  margin: 5px 0px 0px 0px;
+}
+.info h3{
+  text-align: center;
+  font-size: 27px;
+  font-weight: bolder;
+  /* padding: 10px; */
+}
+form{
+  display: flex;
+  flex-direction: column;
+}
+loginForm{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+.loginForm input{
+  width: 300px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #005555;
+}
+
+.loginForm input:focus{
+  border-bottom: 1px solid #145d74;
+}
+
+.loginForm button{
+  cursor: pointer;
+  background: #005555;
+  color: white;
+  border: 1px solid whitesmoke;
+}
+
+.loginForm button:hover{
+  cursor: pointer;
+  transition: 0.5s ease-in;
+  background: #119292;
+}
+
+.loginForm p{
+  font-size: 14px;
+}
+.info div{
+  display: flex;
+  flex-direction: column;
+    /* justify-content: space-evenly; */
+    padding: 5px 30px;
+}
+.info div a{
+  color:#005555;
+  text-decoration: none;
+  cursor:pointer;
+}
+
+.info div a:hover{
+  color: #0fdada;
+}
