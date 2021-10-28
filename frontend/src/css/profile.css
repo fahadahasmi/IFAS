@@ -21,6 +21,7 @@
 }
 
 .Pro-card{
+    display: contents;
     margin: auto ;
 }
 
@@ -31,7 +32,6 @@
 .Profile-img{
     height: 100px;
     width: 100px;
-    margin-left: 80px;
     
 }
 
@@ -43,7 +43,9 @@
     flex-direction: column;
 }
 
-a{
+.Pro-main a{
+    text-decoration: none;
+    color: #020d0f;
     margin: 10px;
 }
 

@@ -7,13 +7,9 @@ const UploadStudent = (props) => {
   const [studentName, setStudentName] = useState("");
   const [rollNo, setRollNo] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
-<<<<<<< HEAD
   const [image, setImage] = useState("");
   const [Id,setId] = useState('');
   const [isAdd, setIsAdd] = useState(true);
-=======
-  // const [url, setURL] = useState("");
->>>>>>> 909a0b2a26b80cb9ec3978b862994a1c13c918b2
   const [data, setData] = useState("");
   const [prevData, setPrevData] = useState("");
   const { datasetName } = useParams();
@@ -144,7 +140,7 @@ function public_id(img_id,url){
       <Navbar />
       <Breadcrumbs />
       <div>
-        <form>
+        <form classname="stdform">
           <input
             type="text"
             name="studentName"
@@ -173,7 +169,7 @@ function public_id(img_id,url){
             }}
             required
           />
-          <input type="button" value="Add Student"  onClick={submit} />
+          <input type="button" value="Add Student" className="stdformbtn" onClick={submit} />
         </form>
         <div>
           <table>

@@ -8,12 +8,14 @@ import "../css/attendance.css";
 const Attendance = () => {
   const videoRef = useRef();
   const canvasRef = useRef();
+  const startBtnRef = useRef();
+  const stopBtnRef = useRef();
   const videoContain = useRef();
   const [studentData, setStudentData] = useState("");
   const [data, setData] = useState("");
   const [selectName, setSelectName] = useState("Class Name");
   let today = new Date();
-  const [selectDate, setSelectDate] = useState(today.toLocaleDateString());
+  const [selectDate, setSelectDate] = useState(today.toISOString().slice(0,10));
   let attend = [];
   const userName = useContext(userData);
   useEffect(() => {
@@ -34,13 +36,23 @@ const Attendance = () => {
   console.log(userName.name);
 
   const start = () => {
-    videoContain.current.style.display = "flex";
-    navigator.mediaDevices
-      .getDisplayMedia({ video: true })
-      .then((stream) => (videoRef.current.srcObject = stream))
-      .catch((err) => console.error(err));
-    getStudentData();
-    console.log(data);
+    if (selectName !== "Class Name") {
+      navigator.mediaDevices
+        .getDisplayMedia({ video: true })
+        .then((stream) => {
+          if (stream) {
+            startBtnRef.current.style.display = "none";
+            stopBtnRef.current.style.display = "block";
+            videoRef.current.srcObject = stream;
+            videoContain.current.style.display = "flex";
+          }
+        })
+        .catch((err) => console.error(err));
+      getStudentData();
+      console.log(data);
+    } else {
+      alert("Please select a class name");
+    }
   };
 
   async function handelVideo() {
@@ -192,10 +204,11 @@ const Attendance = () => {
 
   function stop() {
     let tracks = videoRef.current.srcObject.getTracks();
-
     tracks.forEach((track) => track.stop());
     videoRef.current.srcObject = null;
     videoContain.current.style.display = "none";
+    stopBtnRef.current.style.display = "none";
+    startBtnRef.current.style.display = "block";
     canvasRef.current
       .getContext("2d")
       .clearRect(0, 0, 100, canvasRef.current.width, canvasRef.current.height);
@@ -203,62 +216,68 @@ const Attendance = () => {
 
   return (
     <>
-      <Navbar />
-      <Breadcrumbs />
-      <div className="selectClass">
-        <label htmlFor="className">Select a Class:</label>
-        <select
-          id="className"
-          value={selectName}
-          onChange={(e) => setSelectName(e.target.value)}
+    <Navbar />
+    <Breadcrumbs />
+    <div className="selectClass">
+      <label htmlFor="className">Select a Class:</label>
+      <select
+        id="className"
+        value={selectName}
+        onChange={(e) => setSelectName(e.target.value)}
+      >
+        <option value="Class Name">Class Name</option>
+        {Object.keys(data).map((name, i) => (
+          <option key={i} value={data[name].datasetName}>
+            {data[name].datasetName}
+          </option>
+        ))}
+      </select>
+      <label htmlFor="className">Select a Date:</label>
+      <input
+        type="date"
+        style={{ width: "135px", height: "33px" }}
+        value={selectDate}
+        onChange={(e) => setSelectDate(e.target.value)}
+      />
+    </div>
+    <div className="attendContainer">
+      <div className="WebCam_container" ref={videoContain}>
+        <video
+          autoPlay
+          id="videoInput"
+          ref={videoRef}
+          width="700"
+          height="550"
+          onPlay={handelVideo}
+          muted
+        ></video>
+        <canvas
+          className="Canva_Conatiner"
+          width="700"
+          height="550"
+          ref={canvasRef}
+        />
+      </div>
+      <div id="buttons">
+        <button
+          className="share"
+          style={{ background: "#25c948" }}
+          onClick={start}
+          ref={startBtnRef}
         >
-          <option value="Class Name">Class Name</option>
-          {Object.keys(data).map((name, i) => (
-            <option key={i} value={data[name].datasetName}>
-              {data[name].datasetName}
-            </option>
-          ))}
-        </select>
-        <label htmlFor="className">Select a Date:</label>
-        <input type="date" style={{width:'135px', height:'33px'}} value={selectDate}
-          onChange={(e) => setSelectDate(e.target.value)} />
+          Start share
+        </button>
+        <button
+          className="share"
+          style={{ display: "none", background: "#f74848" }}
+          onClick={stop}
+          ref={stopBtnRef}
+        >
+          Stop share
+        </button>
       </div>
-      <div className="attendContainer">
-        <div className="WebCam_container" ref={videoContain}>
-          <video
-            autoPlay
-            id="videoInput"
-            ref={videoRef}
-            width="700"
-            height="550"
-            onPlay={handelVideo}
-            muted
-          ></video>
-          <canvas
-            className="Canva_Conatiner"
-            width="700"
-            height="550"
-            ref={canvasRef}
-          />
-        </div>
-        <div id="buttons">
-          <button
-            className="share"
-            style={{ background: "#25c948" }}
-            onClick={start}
-          >
-            Start share
-          </button>
-          <button
-            className="share"
-            style={{ background: "#f74848" }}
-            onClick={stop}
-          >
-            Stop share
-          </button>
-        </div>
-      </div>
-    </>
+    </div>
+  </>
   );
 };
 

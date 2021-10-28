@@ -19,6 +19,12 @@ const Home = () => {
       history.push('/signIn')
     }, 3600*1000);
     // eslint-disable-next-line 
+  }, []);
+
+  userInfo();
+
+  function userInfo() {
+    fetch("http://localhost:4000/api/auth/user", {
       method: "POST",
       headers: {
         "auth-token": localStorage.getItem("token"),

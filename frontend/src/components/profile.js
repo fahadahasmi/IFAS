@@ -61,27 +61,27 @@ export default function Profile() {
             }
           </div>
           <div class="Pro-main">
-            <a href="/AttendRecords">
+            <Link to="/Records">
               <img
                 src="https://img.icons8.com/material-outlined/20/000000/database-backup.png"
                 alt="Last Activity"
               />{" "}
               Attendance Records
-            </a>
-            <a href="/ContactUs">
+            </Link>
+            <Link to="/">
               <img
                 src="https://img.icons8.com/ios/20/000000/medical-history.png"
                 class="click"
                 alt="Feedback"
               />{" "}
               Send feedback
-            </a>
-            <a>
+            </Link>
+            <Link>
               <img src="https://img.icons8.com/ios-filled/20/000000/logout-rounded.png" alt="#" />{" "}
               <Link to="#" onClick={signOut}>
                 Logout
               </Link>
-            </a>
+            </Link>
           </div>
         </div>
         <div class="Right-box">
