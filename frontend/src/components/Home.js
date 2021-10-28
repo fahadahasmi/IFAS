@@ -1,7 +1,7 @@
 import { Link, useHistory } from "react-router-dom";
 import "../css/style.css";
 import Chart from "./Chart";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import Breadcrumbs from "./Screens/Breadcrumbs";
 import Navbar from "./Screens/Navbar";
 
@@ -9,13 +9,14 @@ const Home = () => {
   const history = useHistory()
   const [name, setName] = useState('');
   const [isName, setIsName] = useState(false);
-  useEffect(() => {
+  useMemo(() => {
     userInfo();
+    console.log(Date.now());
     setTimeout(() => {
       console.log('After 10s logout');
       localStorage.clear();
       history.push('/signIn')
-    }, 3600 * 1000);
+    }, 3600*1000);
     // eslint-disable-next-line 
   }, []);
 

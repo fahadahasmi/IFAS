@@ -12,7 +12,6 @@ const { OAuth2Client } = require('google-auth-library');
 const client = new OAuth2Client(process.env.CLIENT_ID)
 
 router.post('/signUp', [
-    body('username').isLength({ min: 3 }).withMessage('length should be greater than 3'),
     body('email').isEmail().normalizeEmail(),
     check('password')
     .isLength({ min: 5 })
@@ -20,13 +19,13 @@ router.post('/signUp', [
     .matches(/\d/)
     .withMessage('must contain a number')
 ], async(req, res) => {
-    const { name, username, email, password, institute_name } = req.body;
+    const { name, email, password, institute_name } = req.body;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
 
-    if (await userModel.findOne({ email }) || await userModel.findOne({ username })) {
+    if (await userModel.findOne({ email })) {
         res.json({ error: 'User already exists' })
     }
 
@@ -42,7 +41,6 @@ router.post('/signUp', [
     userModel.create({
             name,
             email,
-            username,
             institute_name,
             password: encryptPassword
         }).then((savedUser) => {
@@ -56,17 +54,17 @@ router.post('/signUp', [
 });
 
 router.post('/signIn', [
-    body('username').isLength({ min: 3 }).withMessage('length should be greater than 3'),
+    body('email').isEmail().normalizeEmail(),
     check('password')
     .isLength({ min: 5 })
     .withMessage('must be at least 5 chars long')
     .matches(/\d/)
     .withMessage('must contain a number')
 ], async(req, res) => {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
     try {
-        const user = await userModel.findOne({ username })
+        const user = await userModel.findOne({ email })
         if (!user) {
             res.status(400).json({ error: "Invalid credentials" });
         }

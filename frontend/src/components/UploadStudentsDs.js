@@ -10,7 +10,6 @@ const UploadStudent = (props) => {
   const [selectedFile, setSelectedFile] = useState("");
   const [image, setImage] = useState("");
   const [Id,setId] = useState('');
-  // const [url, setURL] = useState("");
   const [isAdd, setIsAdd] = useState(true);
   const [data, setData] = useState("");
   const { datasetName } = useParams();

@@ -11,9 +11,11 @@ import UploadStudent from "./components/UploadStudentsDs.js";
 import Protected from "./components/protected.js";
 import { Usercontext } from "./components/Context/userContext";
 
+
 function App() {
+
   return (
-    <Router>
+      <Router>
       <Switch>
         <Route exact path="/">
           <Protected component={Home} />

@@ -96,18 +96,34 @@ router.get("/studCount/:name", async (req, res) => {
     res.status(500).send("Internal server error");
   }
 });
-
-router.post("/editdatasetname/:name", async (req, res) => {
+router.post("/editdatasetname/:name/:uname", async (req, res) => {
   const { datasetName } = req.body;
   console.log(req.params.name);
-  Dataset.findOneAndUpdateOne(
+  console.log(req.params.uname);
+  Dataset.findOneAndUpdate(
     {
+      userName:req.params.uname,
       datasetName: req.params.name,
     },
     { datasetName }
   )
     .then((Data) => {
       res.json(Data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Internal server error");
+    });
+    StudentDs.updateMany(
+      {
+        className:req.params.name
+      },
+      {
+        className:datasetName,
+      },
+    )
+    .then((Data) => {
+      console.log(Data);
     })
     .catch((err) => {
       console.error(err);
@@ -165,16 +181,27 @@ router.post("/editStudentData/:id", async (req, res) => {
   }
 });
 
-router.get("/deletedatasetname/:name", async (req, res) => {
+router.get("/deletedatasetname/:name/:uname", async (req, res) => {
   const { datasetName } = req.body;
   console.log(req.params.name);
-  Dataset.findOneAndDelete(
+  console.log(req.params.uname);
+  StudentDs.deleteMany(
+    { className: req.params.name },
+  ) .then((Data) => {
+    console.log(Data);
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).json({ error: "Internal server error" });
+  });
+  Dataset.deleteOne(
     {
+      userName: req.params.uname,
       datasetName: req.params.name,
-    },
-    { datasetName }
+    }
   )
     .then((Data) => {
+      console.log(Data);
       res.json(Data);
     })
     .catch((err) => {

@@ -1,6 +1,6 @@
 import Navbar from "./Screens/Navbar.js";
 import React, { useState, useEffect } from "react";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Breadcrumbs from "./Screens/Breadcrumbs.js";
 import "../css/UploadDataset.css";
 // import {Link} from 'react-router-dom';
@@ -9,9 +9,13 @@ const UploadDataset = () => {
   const [name, setName] = useState("");
   const [prevData, setPrevData] = useState("");
   const [isAdd, setIsAdd] = useState(true);
+  const [isName, setIsName] = useState(false);
   useEffect(() => {
     userInfo();
-    getData();
+    if (isName) {
+      getData()
+      setIsName(false)
+    }
     // eslint-disable-next-line
   }, []);
   const [datasetName, setDatasetName] = useState("");
@@ -35,17 +39,18 @@ const UploadDataset = () => {
       });
   };
 
-  function userInfo(){
+  function userInfo() {
     fetch("http://localhost:4000/api/auth/user", {
       method: "POST",
-      headers:{
-        'auth-token':localStorage.getItem('token'),
+      headers: {
+        'auth-token': localStorage.getItem('token'),
       }
     })
       .then((res) => res.json())
       .then((data) => {
         setName(data);
-        getData();
+        setIsName(true);
+        getData()
       })
       .catch((err) => {
         console.log(err);
@@ -57,16 +62,42 @@ const UploadDataset = () => {
     result = await result.json();
     setData(result);
   };
-
-  function editDs(name){
+  getData();
+  function editDs(id, name) {
     setPrevData(name)
     setDatasetName(name);
-    console.log(datasetName)
-    console.log(prevData)
     setIsAdd(false);
   }
-  getData();
-  function editSubmit(){
+
+  function deleteDs(clsname) {
+    console.log(clsname);
+    console.log(name.name);
+    fetch(`http://localhost:4000/api/dataset/deletedatasetname/${clsname}/${name.name}`)
+    .then(res => res.json())
+      .then((data) => {
+        console.log(data)
+        getData();
+      })
+      .catch((e) => console.log(e))
+  }
+
+  function editSubmit() {
+    console.log(datasetName)
+    console.log(prevData)
+    fetch(`http://localhost:4000/api/dataset/editdatasetname/${prevData}/${name.name}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        datasetName,
+      }),
+    }).then(res => res.json())
+      .then((data) => {
+        console.log(data)
+        getData();
+      })
+      .catch((e) => console.log(e))
     setIsAdd(true)
   }
 
@@ -85,14 +116,15 @@ const UploadDataset = () => {
             onChange={(e) => {
               setDatasetName(e.target.value);
             }}
+            required
           />
           {
-            isAdd?<button type="button" className="addDataset" onClick={submit}>
-            Add Student
-          </button>:
-          <button type="button" className="addDataset" onClick={editSubmit}>
-            Edit
-          </button>
+            isAdd ? <button type="button" className="addDataset" onClick={submit}>
+              Add Dataset
+            </button> :
+              <button type="button" className="addDataset" onClick={editSubmit}>
+                Edit
+              </button>
           }
         </div>
         <div>
@@ -103,19 +135,19 @@ const UploadDataset = () => {
                 <th>Class</th>
                 <th>Action</th>
               </tr>
-              {Object.keys(data).map((name,ind)=>(
+              {Object.keys(data).map((name, ind) => (
                 <tr>
-      <td key={ind}>{ind + 1}</td>
-      <td>{data[name].datasetName}</td>
-      <td>
-        <img src="../Image/outline_delete_black_24dp.png" alt="delete" />
-        <img src="../Image/outline_edit_black_24dp.png" alt="edit" onClick={()=>editDs(data[name].datasetName)} />
-        <Link to={'/upload students/'+data[name].datasetName}><img
-          src="https://img.icons8.com/material-sharp/24/000000/upload--v2.png"
-          alt="upload" 
-        /></Link>
-      </td>
-    </tr>
+                  <td key={ind}>{ind + 1}</td>
+                  <td>{data[name].datasetName}</td>
+                  <td>
+                    <img src="../Image/outline_delete_black_24dp.png" alt="delete" onClick={() => deleteDs(data[name].datasetName)} />
+                    <img src="../Image/outline_edit_black_24dp.png" alt="edit" onClick={() => editDs(data[name]._id, data[name].datasetName)} />
+                    <Link to={'/upload students/' + data[name].datasetName}><img
+                      src="https://img.icons8.com/material-sharp/24/000000/upload--v2.png"
+                      alt="upload"
+                    /></Link>
+                  </td>
+                </tr>
               ))}
             </tbody>
           </table>

@@ -1,14 +1,40 @@
-import React, { useState } from "react";
+import React, { useState,useRef,useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import "../css/reg.css";
 import GoogleAuth from "./GoogleAuth";
+import WAVES from 'vanta/dist/vanta.waves.min'
+
 const SignUp = () => {
+  const [vantaEffect, setVantaEffect] = useState(0)
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [institute, setInstitute] = useState("");
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const vantaRef = useRef(null);
   const history = useHistory();
+  useEffect(() => {
+    if (!vantaEffect) {
+      setVantaEffect(WAVES({
+        el: vantaRef.current,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: '#038373',
+        shininess: 21.00,
+        waveHeight: 6.50,
+        waveSpeed: 2.00,
+        zoom: 0.90
+
+      }))
+    }
+    return () => {
+      if (vantaEffect) vantaEffect.destroy()
+    }
+  }, [vantaEffect])
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch("http://localhost:4000/api/auth/signUp", {
@@ -20,7 +46,6 @@ const SignUp = () => {
         email,
         name,
         institute_name: institute,
-        username,
         password,
       }),
     });
@@ -36,85 +61,64 @@ const SignUp = () => {
   };
 
   return (
-    <div className="gradient-background">
-      <div className="container2">
-        <h2>FACE RECOGNITION SYSTEM</h2>
-        <section>
-          <div className="logo1">
-            <img src="/Image/fr logo.jpg" alt="logo" />
+    <div className="mainSection">
+      <div className="leftSection">
+        <div className="imgCont" ref={vantaRef}>
+          {/* <img src="/Image/poly.svg" alt="" /> */}
+        </div>
+        <div className='googleButCont'>
+          <h2>Get Started</h2>
+          <GoogleAuth />
+        </div>
+      </div>
+      <div className="rightSection">
+          <div id="Logo">
+            <img src="/Image/logo.jpg" alt="logo" />
           </div>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="email" />
-            <input
-              type="email"
-              placeholder="Email ID"
-              name="email"
-              id="email"
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              value={email}
-              required
-            />
-            <label htmlFor="name" />
-            <input
-              type="text"
-              placeholder="Name"
-              name="name"
-              id="name"
-              onChange={(e) => {
+          <div className="formCont">
+              <h3>Register</h3>
+              <form onSubmit={handleSubmit}>
+                  <div className="formFields">
+                    <label htmlFor='name'>Name</label>
+                    <input type="text" id="name" placeholder="Name"  onChange={(e) => {
                 setName(e.target.value);
               }}
               value={name}
-              required
-            />
-            <label htmlFor="institute" />
-            <input
-              type="text"
-              placeholder="Institute Name"
-              name="institute"
-              id="institute"
-              onChange={(e) => {
+              required />
+                  </div>
+                  <div className="formFields">
+                    <label htmlFor='email'>Email</label>
+                    <input type="email" id="email" placeholder="Email" onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              value={email} required  />
+                  </div>
+                  <div className="formFields">
+                    <label htmlFor='institute_name'>Institute Name</label>
+                    <input type="institute_name" id="institute_name" placeholder="Institute Name" onChange={(e) => {
                 setInstitute(e.target.value);
               }}
               value={institute}
-              required
-            />
-            <label htmlFor="username" />
-            <input
-              type="text"
-              placeholder="Username"
-              name="username"
-              id="username"
-              onChange={(e) => {
-                setUsername(e.target.value);
-              }}
-              value={username}
-              required
-            />
-            <label htmlFor="pswd" />
-            <input
-              type="password"
-              placeholder="Password"
-              name="password"
-              id="pswd"
-              onChange={(e) => {
+              required />
+                  </div>
+                  <div className="formFields">
+                    <label htmlFor='password'>Password</label>
+                    <input type="password" id="password" placeholder="Password" onChange={(e) => {
                 setPassword(e.target.value);
               }}
               value={password}
-              required
-            />
-            <button className="btn" type="submit">
-              Sign Up
-            </button>
-          </form>
-          <div id="login">
-              <GoogleAuth />
-              <p>
-                Already have an account? <Link to="/signIn">Login</Link>
-              </p>
-            </div>
-        </section>
+              required />
+                  </div>
+                  <div className="formFields">
+                    <button>Sign Up</button>
+                  </div>
+              </form>
+              <div>
+                <p>Already registered?</p>
+                <Link to='/signIn'>Login</Link>
+              </div>
+
+          </div>
       </div>
     </div>
   );
