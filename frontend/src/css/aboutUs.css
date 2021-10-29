@@ -1,0 +1,68 @@
+
+.abt-contain {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+h1.big {
+    margin: 20px 0px 0px 50px;
+    display: flex;
+}
+
+.top {
+    padding: 10px 20px;
+    height: 250px;
+    background: lightseagreen;
+    margin-left: 50px;
+}
+
+h1.we {
+    height: 50px;
+}
+
+h2 {
+    width: 500px;
+}
+
+.butt {
+    margin: 10px;
+}
+
+img.rec {
+    position: absolute;
+    top: 11%;
+    left: 62%;
+    height: 260px;
+    width: 507px;
+    border: inset;
+
+}
+
+.inf {
+    display: flex;
+    justify-content: space-evenly;
+    /* margin-top: 50px; */
+    height: 295px;
+}
+
+.diff {
+    width: 350px;
+    /* margin: 50px 70px 20px 30px; */
+    margin-top: 50px;
+    background-color: rgb(27, 163, 163);
+    height: 320px;
+    padding: 10px;
+
+}
+
+.diff:hover {
+    background-color: rgb(22, 114, 114);
+    transition: 0.8s;
+}
+
+.para {
+    margin-top: 10px;
+    word-spacing: 1rem;
+    margin-bottom: 100px;
+}

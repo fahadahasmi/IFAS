@@ -1,0 +1,105 @@
+.dev {
+    display: flex;
+    flex-direction: column;
+}
+
+.upper {
+    color: white;
+    display: flex;
+    align-items: flex-start;
+}
+
+img .Background {
+    height: 300px;
+    width: -webkit-fill-available;
+    backface-visibility: hidden;
+    background-image: none;
+}
+
+.upper h1 {
+    display: flex;
+    position: relative;
+    top: 0%;
+    left: 0%;
+    margin: 20px;
+}
+
+.upper p {
+    position: relative;
+    margin: 100px 0px 0px 0px;
+    display: flex;
+    padding: 20px;
+    width: 250px;
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: justify;
+    align-items: center;
+}
+
+.upper h2 {
+    margin: 238px 0px 0px 14px;
+    position: relative;
+    padding: 6px 10px;
+    background: #5fb5b2;
+    border-radius: 25px;
+
+}
+
+p.few {
+    padding: 20px;
+    display: block;
+    text-align: center;
+    background: #70dbd7;
+    font-weight: bolder;
+}
+
+.lower {
+    display: flex;
+    flex-direction: row;
+    background:#336a68 ;
+}
+
+.bag {
+    margin: 10px;
+    background: antiquewhite;
+}
+.bagg{
+    margin: 10px;
+    background: antiquewhite;
+}
+
+.profil {
+    width: 200px;
+    height: 200px;
+    border-image: round;
+    border-radius: 100px;
+    margin: 10px 50px;
+}
+.profilly{
+    width: 200px;
+    height: 200px;
+    border-image: round;
+    border-radius: 100px;
+    margin: 10px 0px 0px 70px;
+}
+
+h1.hop {
+    padding: 10px;
+    margin-top: 10px;
+}
+
+p.bees {
+    padding: 5px 20px 0px 20px;
+    display: flex;
+    text-align: justify;
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.fah{
+    display: flex;
+    justify-content: center;
+}

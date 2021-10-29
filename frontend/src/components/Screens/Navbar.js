@@ -40,14 +40,12 @@ const Navbar = () => {
                 Logout
               </Link>
             </li>
-            <li>
-              <Link to="/profile">
-                <img
-                  src="https://img.icons8.com/color/48/000000/test-account.png"
-                  alt="img"
-                />
-              </Link>
-            </li>
+            <Link id="profile_logo" to="/profile">
+              <img
+                src="https://img.icons8.com/color/48/000000/test-account.png"
+                alt="img"
+              />
+            </Link>
           </ul>
         </div>
       </nav>

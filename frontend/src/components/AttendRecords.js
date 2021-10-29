@@ -56,30 +56,35 @@ const AttendRecords = () => {
       <Navbar />
       <Breadcrumbs />
       <div className="selectClass">
-        <label htmlFor="className">Select a Class:</label>
-        <select
-          id="className"
-          value={selectName}
-          onChange={(e) => {
-            setSelectName(e.target.value);
-          }}
-        >
-          <option value="Class Name">Class Name</option>
-          {Object.keys(data).map((name, i) => (
-            <option key={i} value={data[name].datasetName} onChange={() => {}}>
-              {data[name].datasetName}
-            </option>
-          ))}
-        </select>
-        <label htmlFor="className">Select a Date:</label>
-        <input
-          type="date"
-          style={{ width: "135px", height: "33px" }}
-          value={selectDate}
-          onChange={(e) => setSelectDate(e.target.value)}
-        />
-        <button onClick={getAttendanceData}>Show data</button>
+        <div>
+          <label htmlFor="className">Select a Class:</label>
+          <select
+            id="className"
+            value={selectName}
+            onChange={(e) => {
+              setSelectName(e.target.value);
+            }}
+          >
+            <option value="Class Name">Class Name</option>
+            {Object.keys(data).map((name, i) => (
+              <option key={i} value={data[name].datasetName} onChange={() => { }}>
+                {data[name].datasetName}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="className">Select a Date:</label>
+          <input
+            type="date"
+            style={{ width: "135px", height: "33px" }}
+            value={selectDate}
+            onChange={(e) => setSelectDate(e.target.value)}
+          />
+        </div>
+        <button style={{ margin: '30px',background:'#0c7871',color:'white' }} onClick={getAttendanceData}>Show data</button>
       </div>
+
       <div>
         <table style={{ display: "none" }} ref={showTable}>
           <tbody>
@@ -100,7 +105,7 @@ const AttendRecords = () => {
                     style={{ width: 60, height: 60 }}
                   />
                 </td>
-                <td style={{ color: "green" }}>
+                <td>
                   {studentData[name].Attendance}
                 </td>
               </tr>

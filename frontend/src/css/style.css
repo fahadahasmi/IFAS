@@ -4,6 +4,10 @@
     margin: 0px;
 }
 
+body{
+    overflow-x: hidden;
+}
+
 .navbar {
     display: flex;
     align-items: center;
@@ -24,7 +28,7 @@
 .logo img {
     width: 150px;
     height: 50px;
-    margin: 10px;
+    margin: 5px 10px;
 }
 
 .logo h2 {
@@ -44,7 +48,7 @@
 
 .nav-content ul {
     display: flex;
-    align-items: center;
+    align-items: baseline;
 }
 
 .nav-content ul li {
@@ -56,7 +60,7 @@
 .nav-content ul li a {
     display: flex;
     color: black;
-    margin: 10px;
+    margin: 5px;
     padding: 5px;
     font-size: 20px;
     font-weight: bold;
@@ -64,7 +68,7 @@
     font-family: 'Bitter', serif;
 }
 
-.nav-content ul li a img {
+.nav-content ul a img {
     width: 40px;
     height: 40px;
     cursor: pointer;
@@ -162,8 +166,7 @@
     width: 160px;
     height: 150px;
     margin-bottom: 13px;
-
-     
+    border-radius: 50%;     
 }
 
 .buttonsSection {

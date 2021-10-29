@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import SignUp from "./components/signUp.js";
 import SignIn from "./components/signIn.js";
+import AboutUs from "./components/AboutUs.js";
+import AboutDeveloper from "./components/AboutDeveloper.js";
 import Home from "./components/Home.js";
 import UploadDataset from "./components/UploadDataset.js";
 import UploadStudent from "./components/UploadStudentsDs.js";
@@ -31,12 +33,17 @@ function App() {
         <Route exact path="/attendance">
           <Protected component={Usercontext} />
         </Route>
-
         <Route exact path="/Records">
           <Protected component={Usercontext} />
         </Route>
         <Route exact path="/profile">
           <Protected component={Profile} />
+        </Route>
+        <Route exact path="/aboutUs">
+          <Protected component={AboutUs} />
+        </Route>
+        <Route exact path="/aboutDevelop">
+          <Protected component={AboutDeveloper} />
         </Route>
         <Route exact path="/signUp">
           <SignUp />

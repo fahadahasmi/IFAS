@@ -53,7 +53,7 @@ export default function Profile() {
       <section id="lef-pro">
         <div class="Pro-Container">
           <div class="Pro-card">
-            <img src="https://img.icons8.com/color/48/000000/test-account.png" class="Profile-img" alt="Profile" />
+          <img src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg" className='Profile-img' alt="img"></img>
             {
               isProf?              <>
               <h2>{profile1.name}</h2>

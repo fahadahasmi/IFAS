@@ -57,7 +57,7 @@ const Breadcrumbs = () => {
           </Link>
           <div className="Profile">
 
-            <img src="https://img.icons8.com/color/48/000000/test-account.png" alt="img"></img>
+            <img src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg" alt="img"></img>
             {
               isProf?              <>
               <h2>{profile.name}</h2>
@@ -67,10 +67,10 @@ const Breadcrumbs = () => {
           </div>
           <hr></hr>
 
-          <Link to="#">About Us</Link>
+          <Link to="/aboutUs">About Us</Link>
           <Link to="#">Contact Us</Link>
           <Link to="#">Help</Link>
-          <Link to="#">About Developers</Link>
+          <Link to="/aboutDevelop">About Developers</Link>
         </div>
       </div>
     </>

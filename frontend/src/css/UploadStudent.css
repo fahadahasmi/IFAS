@@ -44,7 +44,7 @@ table
     display: flex;
     margin: 50px auto;
     width: max-content;
-    background: azure;
+    background: #ebf4f3;
     align-content: center;
     border-collapse: collapse;
     box-shadow: 4px 5px 9px grey;
@@ -58,7 +58,6 @@ td{
 tr{
     padding: 30px;
     text-align: center; 
-    border-bottom: 1px solid black;
 }
 
 td img{

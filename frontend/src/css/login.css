@@ -1,28 +1,15 @@
+@import url('http://fonts.cdnfonts.com/css/tex-gyre-termes');
 * {
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
 }
-
-/* body{
-  background-color: #49b6b6;;
-}
-
-#root{
-  height: 500px;
-    background: rgba(245, 245, 245, 0.541);
-    margin-bottom: 20px;
-} */
 
 .container1 {
-
-    letter-spacing: 0.05em;
     display:flex;
-    margin: 30px auto;  
+    margin: 0px auto;  
     box-shadow: 3px 3px 3px 1px #000000;
     width: 800px;
-    margin-top: 100px;
 }
 
 .lefty{
@@ -31,13 +18,23 @@
   width: 400px;
   background: #005555;
 }
+.googleButCont{
+    margin: 20px auto;
+}
+
+.googleButCont h2{
+    font-family: 'TeXGyreTermes', sans-serif;
+    text-align: center;
+    margin: auto;
+    color: white;
+}
+
 .googleBtn{
   margin: 30px ;
 }
 .googleBtn h2{
+  font-family: 'TeXGyreTermes', sans-serif;
   text-align: center;
-  
-  /* margin: 30px 0px 0px -106px; */
   color: white;
 }
 .logo1{
@@ -50,23 +47,6 @@
   border-bottom-right-radius: 40%;
 }
 
-button{
-  cursor: pointer;
-  padding: 2px;
-  font-weight: bolder;
-  font-size: 18px;
-  height: 40px;
-  width: 200px;
-  border: 1px solid #ffffff;
-  box-shadow: inset 0px 4px 24px rgb(0 0 0 / 25%);
-  border-radius: 20px;
-  display: flex;
-  background: rgb(80, 187, 186);
-  margin: 42px 20px 18px 140px;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
 .righty{
   display: flex;
   flex-direction: column;
@@ -88,6 +68,7 @@ button{
   margin: 5px 0px 0px 0px;
 }
 .info h3{
+  font-family: 'TeXGyreTermes', sans-serif;
   text-align: center;
   font-size: 27px;
   font-weight: bolder;
@@ -97,23 +78,25 @@ form{
   display: flex;
   flex-direction: column;
 }
-loginForm{
+.loginForm{
   display: flex;
   flex-direction: column;
   width: 300px;
 }
 .loginForm input{
-  width: 300px;
+    font-family: 'TeXGyreTermes', sans-serif;
+    width: 300px;
     background: none;
-    border: none;
-    border-bottom: 1px solid #005555;
+    /* border: none;
+    border-bottom: 1px solid #005555; */
 }
 
 .loginForm input:focus{
-  border-bottom: 1px solid #145d74;
+  border: 1px solid #145d74;
 }
 
 .loginForm button{
+  font-family: 'TeXGyreTermes', sans-serif;
   cursor: pointer;
   background: #005555;
   color: white;
@@ -127,15 +110,17 @@ loginForm{
 }
 
 .loginForm p{
+  font-family: 'TeXGyreTermes', sans-serif;
   font-size: 14px;
 }
 .info div{
   display: flex;
-  flex-direction: column;
-    /* justify-content: space-evenly; */
+  /* flex-direction: column; */
+    justify-content: space-evenly;
     padding: 5px 30px;
 }
 .info div a{
+  font-family: 'TeXGyreTermes', sans-serif;
   color:#005555;
   text-decoration: none;
   cursor:pointer;

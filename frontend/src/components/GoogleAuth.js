@@ -35,8 +35,8 @@ const GoogleAuth = () => {
         clientId="729665954198-81fudj2fk3fd5il8jdha5suvej5r412c.apps.googleusercontent.com"
         render={(renderProps) => (
           <button
-            style={{ background: "#50bbba",width: 'max-content',
-            margin: '20px 45px' }}
+            style={{ background: "#007777",width: 'max-content',
+            margin: '20px' }}
             onClick={renderProps.onClick}
             disabled={renderProps.disabled}
           >
@@ -84,7 +84,7 @@ const GoogleAuth = () => {
                 </g>
               </svg>
 
-              <h4 style={{ margin: "34px",color:'#ecf0f1' }}>Sign with Google</h4>
+              <h4 style={{ margin: "34px", color: '#ecf0f1', fontFamily:'TeXGyreTermes, sans-serif'}}>SignIn with Google</h4>
             </div>
           </button>
         )}
