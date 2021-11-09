@@ -1,3 +1,6 @@
+body {
+    background-color: azure;
+}
 
 .abt-contain {
     display: flex;
@@ -6,13 +9,14 @@
 }
 
 h1.big {
-    margin: 20px 0px 0px 50px;
+    margin: 20px auto;
     display: flex;
 }
 
 .top {
+    width:500px;
     padding: 10px 20px;
-    height: 250px;
+    height: 380px;
     background: lightseagreen;
     margin-left: 50px;
 }
@@ -30,9 +34,6 @@ h2 {
 }
 
 img.rec {
-    position: absolute;
-    top: 11%;
-    left: 62%;
     height: 260px;
     width: 507px;
     border: inset;
@@ -51,7 +52,7 @@ img.rec {
     /* margin: 50px 70px 20px 30px; */
     margin-top: 50px;
     background-color: rgb(27, 163, 163);
-    height: 320px;
+    height: 370px;
     padding: 10px;
 
 }
@@ -62,7 +63,127 @@ img.rec {
 }
 
 .para {
+    display: flex;
     margin-top: 10px;
-    word-spacing: 1rem;
     margin-bottom: 100px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+  /* Contact CSS */
+
+.contact {
+    flex-direction: column;
+    background-color: #c1af9b;;
+}
+
+.contact h1 {
+    display: flex;
+    justify-content: center;
+    margin-top:25px;
+}
+
+.summary {
+    display: flex;
+}
+
+
+.chips {
+    display: flex;
+    flex-direction: column;
+    background: #1d444c;
+    color: whitesmoke;
+    width: 500px;
+}
+
+.chips h1 {
+    font-size: 24px;
+    font-family: cursive;
+    font-weight: lighter;
+}
+
+#add {
+    padding: 0px 145px 10px 135px;
+    display: block;
+    justify-content: center;
+    text-align: center;
+}
+
+#Email {
+    padding: 20px 90px 20px 95px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 20px;
+}
+
+#Email a {
+    padding: 5px 10px 15px 20px;
+    color: whitesmoke;
+}
+
+
+.fcon h2 {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+
+}
+
+.fcon p {
+    margin-left: 170px;
+}
+
+.fcon img {
+    padding: 10px 12px;
+}
+
+.cuff {
+    width: 850px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8d7ac;
+}
+
+.cuff h3 {
+    display: flex;
+    justify-content: center;
+    font-size: 28px;
+    font-family: cursive;
+    font-weight: lighter;
+    padding: 20px 0px 20px 0px;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0px 16px 215px;
+}
+
+input#text {
+    width: 410px;
+    height: 45px;
+    border-radius: 13px;
+    padding-left: 26px;
+    outline: none;
+    border: none;
+    margin: 12px 0px;
+    text-align: justify;
+}
+
+button#send {
+    display: flex;
+    width: 186px;
+    padding: 11px;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0px 20px 360px;
+    border-radius: 9px;
+    background: #39969b;
+    cursor: pointer;
+    font-size: larger;
+    font-weight: bolder;
 }

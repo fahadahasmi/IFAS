@@ -8,12 +8,6 @@ export default function AboutDeveloper() {
             <Navbar />
             <Breadcrumbs />
             <div className="dev">
-                <div className="upper">
-                    <img src="Background.png" className="Background" alt="BackgroundImage" />
-                    <h1>About Developer</h1>
-                    <p>Build Something Amazing that will reach over a billion people across more than 21% of the web</p>
-                    <h2>Let's Get Started</h2>
-                </div>
                 <p className="few">We're the software design and engineering team that can bring it to life. We have the vision for
                     a stunning digital attendance experience. </p>
 

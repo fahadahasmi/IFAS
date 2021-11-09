@@ -68,7 +68,7 @@ const Breadcrumbs = () => {
           <hr></hr>
 
           <Link to="/aboutUs">About Us</Link>
-          <Link to="#">Contact Us</Link>
+          <Link to="/aboutUs">Contact Us</Link>
           <Link to="#">Help</Link>
           <Link to="/aboutDevelop">About Developers</Link>
         </div>

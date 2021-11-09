@@ -8,14 +8,6 @@
     display: flex;
     align-items: flex-start;
 }
-
-img .Background {
-    height: 300px;
-    width: -webkit-fill-available;
-    backface-visibility: hidden;
-    background-image: none;
-}
-
 .upper h1 {
     display: flex;
     position: relative;
