@@ -1,4 +1,5 @@
-# Smart Attendance System
+# Online Attendance With Face Recognition Using AI
+
 
 Face recognition is among the most productive image processing applications and has a pivotal role in the technical field.
 Recognition of the human face is an active issue for authentication purposes specifically in the context of attendance of students. 
